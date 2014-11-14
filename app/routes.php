@@ -14,7 +14,8 @@
 Route::get('/', function()
 {
 	//return View::make('hello');
-	return "Main Landing page. Add links for Hotel and Attractions";
+	return View::make('index');
+	//return "Main Landing page. Add links for Hotel and Attractions";
 });
 
 
