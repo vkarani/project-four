@@ -18,4 +18,8 @@ Will present Demo in my section on ???
 - Already had link to p3 in p1, but fixed a broken link. ??? TODO
 
 ## Outside code and resources
-- Bootstrap maxcdn.bootstrapcdn.com
+- Bootstrap:            maxcdn.bootstrapcdn.com
+- Google maps:          https://www.google.com/maps
+- Google URL shortener: https://goo.gl/
+- Wikimedia images:     http://upload.wikimedia.org/wikipedia/commons/a/a1/Statue_of_Liberty_7.jpg
+- Wikimedia images:     http://upload.wikimedia.org/wikipedia/commons/1/18/3021-Central_Park-Sheep_Meadow.JPG

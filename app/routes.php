@@ -51,8 +51,8 @@ Route::post('/hotels/edit/{name}', function()
 /*List of Attractions*/
 Route::get('/attractions', function()
 {
-	//return View::make('???');
-	return "List of Available Attractions";
+	return View::make('attractions');
+	//return "List of Available Attractions";
 });
 
 /*Admin console to add/edit attractions*/

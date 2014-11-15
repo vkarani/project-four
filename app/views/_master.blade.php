@@ -5,6 +5,7 @@
     <meta charset='utf-8'>
     <!-- maxcdn gives the Bootstrap stylesheet-->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    @yield('styling') {{-- Add any extra css here --}}
   </head>
   <body>
     <!-- Navigate easily to everything -->
@@ -43,8 +44,6 @@
     <div class = container-fluid>  
       <div class="row">
         <div class="col-sm-3">
-          <!-- TODO ADD AN IMAGE
-          <img class="displayed" src='Victor.png' alt='Victor Karani'> -->
           <img src=' {{ URL::asset('images/Freedom-Tower.jpg') }} ' alt='Freedom Tower'>
         </div>
         <div class="col-sm-9">
