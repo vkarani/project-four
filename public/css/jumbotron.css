@@ -1,0 +1,10 @@
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: url(/images/jumbotron/GWB_long.png);
+    /*background-image: url(http://upload.wikimedia.org/wikipedia/commons/8/82/Gwb.jpg);*/
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: black 0.3em 0.3em 0.3em;
+}

@@ -5,11 +5,12 @@
     <meta charset='utf-8'>
     <!-- maxcdn gives the Bootstrap stylesheet-->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    @yield('styling') {{-- Add any extra css here --}}
+    <link rel="stylesheet" href="/css/jumbotron.css" type="text/css">
+    @yield('styling') {{-- Extra css goes here --}}
   </head>
   <body>
     <!-- Navigate easily to everything -->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -17,12 +18,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span> 
           </button>
-         <a class="navbar-brand" href="#">New York Sites and Hotels</a>
+         <a class="navbar-brand" href="#">New York Travel</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Sites</a></li>
+            <li><a href="#">Attractions</a></li>
             <li><a href="#">Hotels</a></li>  
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -36,17 +37,19 @@
     <!-- Use Jumbotron to announce your intentions... -->
     <div class = container-fluid>
       <div class="jumbotron">
-        <h2>Victor Karani P4: New York Sites and Hotels</h1>            
+        <h2>Victor Karani P4: New York Travel</h1>            
       </div>
     </div>
     
     <!-- Put stuff inside bootstrap columns-->
     <div class = container-fluid>  
       <div class="row">
+        <!--
         <div class="col-sm-3">
           <img src=' {{ URL::asset('images/Freedom-Tower.jpg') }} ' alt='Freedom Tower'>
         </div>
-        <div class="col-sm-9">
+        -->
+        <div class="col-sm-12">
           @yield('content')
         </div>  
       </div>
