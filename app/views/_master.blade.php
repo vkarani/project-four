@@ -44,11 +44,6 @@
     <!-- Put stuff inside bootstrap columns-->
     <div class = container-fluid>  
       <div class="row">
-        <!--
-        <div class="col-sm-3">
-          <img src=' {{ URL::asset('images/Freedom-Tower.jpg') }} ' alt='Freedom Tower'>
-        </div>
-        -->
         <div class="col-sm-12">
           @yield('content')
         </div>  

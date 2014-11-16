@@ -22,8 +22,8 @@ Route::get('/', function()
 /*List of Hotels*/
 Route::get('/hotels', function()
 {
-	//return View::make('???');
-	return "List of Available Hotels";
+	return View::make('hotels');
+	//return "List of Available Hotels";
 });
 
 /*Admin console to add/edit a hotel*/

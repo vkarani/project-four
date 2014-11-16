@@ -24,3 +24,4 @@ Will present Demo in my section on ???
 - Wikimedia images:     http://upload.wikimedia.org/wikipedia/commons/a/a1/Statue_of_Liberty_7.jpg
 - Wikimedia images:     http://upload.wikimedia.org/wikipedia/commons/1/18/3021-Central_Park-Sheep_Meadow.JPG
 - Wikimedia images:     http://upload.wikimedia.org/wikipedia/commons/8/82/Gwb.jpg
+- Standard Hotels:      Picture of the standard hotel
