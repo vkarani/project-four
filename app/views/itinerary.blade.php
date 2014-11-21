@@ -10,7 +10,7 @@ Attractions
 
 
 @section('content')
-
+<h2>Here is your itinerary</h2>
 <table id="t01" class= "table table-hover table-striped table-responsive">
   <tr>
     <th>Hotel</th>
