@@ -22,13 +22,18 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Attractions</a></li>
-            <li><a href="#">Hotels</a></li>  
+            <li><a href="/">Home</a></li>
+            <li><a href="/hotels">Hotels</a></li>
+            <li><a href="/attractions">Attractions</a></li>
+            {{-- Only display itinerary when logged in TODO --}}
+            <li><a href="/itinerary">Itinerary</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            {{-- Only display if NOT logged in TODO --}}
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            {{-- Only display when logged in TODO --}}
+            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
           </ul>
         </div>
       </div>

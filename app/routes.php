@@ -99,7 +99,8 @@ visit ANY itinerary page.
 */
 Route::get('/itinerary', function()
 {
-   return "Display a list of all itineraries";
+   return View::make('itinerary');
+   //return "Display a list of all itineraries";
 });
 /*Add itinerary*/
 Route::get('/itinerary/add', function()
