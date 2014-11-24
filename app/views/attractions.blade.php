@@ -8,6 +8,16 @@ Attractions
 <link rel='stylesheet' href='/css/attraction.css' type='text/css'>
 @stop
 
+@section('nav_pages')
+  <li><a href="/hotels">Hotels</a></li>
+  <li><a href="/attractions">Attractions</a></li>
+  <li><a href="/itinerary">Itinerary</a></li>
+@stop
+
+@section('user_session')
+  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+@stop
+
 
 @section('content')
 <section class='attraction'>

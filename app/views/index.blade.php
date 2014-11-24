@@ -5,9 +5,19 @@
 @stop
 
 @section('styling')
-<link rel='stylesheet' href='/css/landing.css' type='text/css'>
-<link rel='stylesheet' href='/css/attraction.css' type='text/css'>
-<link rel='stylesheet' href='/css/hotel.css' type='text/css'>
+  <link rel='stylesheet' href='/css/landing.css' type='text/css'>
+  <link rel='stylesheet' href='/css/attraction.css' type='text/css'>
+  <link rel='stylesheet' href='/css/hotel.css' type='text/css'>
+@stop
+
+@section('nav_pages')
+  <li><a href="/">Home</a></li>
+@stop
+
+@section('user_session')
+  {{-- Only display if NOT logged in TODO --}}
+  <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+  <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 @stop
 
 @section('content')
@@ -16,60 +26,8 @@
   <h2>Welcome</h2>
   <p>This website allows you to plan your travel to famous New York destinations and share your travels with your friends</p>
   <p>Please <b>Sign Up</b> or <b>Login</b></p>
-  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-  <p> <del><b><font color="red">NOTE !!! Only display this if user is NOT logged in.</font></b></del> </p>
- </section>
- 
- <section class='attraction'>
-  <h2>Central Park</h2>
-  <p>An urban green space like no other</p>
-  <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
-   src=' {{ URL::asset('images/attractions/Central_Park.png') }} '
-   >
-  <br>
-  <p><a href='http://goo.gl/1ci2qj'>Map</a> |
-   <a href='#'>Visit</a> |  {{-- Add to itinerary--}}
-   <a href='#'>Comment</a>
-   <p> <del><b><font color="red">NOTE !!! Only display this if user IS logged in.</font></b></del> </p>
-  </p>
- </section>
-
- <section class='attraction'>
-  <h2>Lady Liberty</h2>
-  <p>Liberty Enlightens the world</p>
-  <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
-   src='{{ URL::asset('images/attractions/Statue_of_Liberty.png') }}'>
-  <p><a href='http://goo.gl/tNXFfC'>Map</a> | 
-   <a href='#'>Visit</a> |  {{-- Add to itinerary--}}
-   <a href='#'>Comment</a>
-   <p> <del><b><font color="red">NOTE !!! Only display this if user IS logged in.</font></b></del> </p>
-  </p>
- </section>
- 
- <section class='hotel'>
-  <h2>The Standard, High Line</h2>
-  <p>Amazing views straddling a one of a kind elevated park</p>
-  <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
-   src=' {{ URL::asset('images/hotels/Standard.png') }} '
-   >
-  <br>
-  <p><a href='http://goo.gl/O1NfVZ'>Map</a> |
-   <a href='#'>Book</a> |  {{-- Add to itinerary--}}
-   <a href='#'>Comment</a>
-   <p> <del><b><font color="red">NOTE !!! Only display this if user IS logged in.</font></b></del> </p>
-  </p>
- </section>
-
- <section class='hotel'>
-  <h2>The W Hotel</h2>
-  <p>Midtown and next to everything</p>
-  <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
-   src='{{ URL::asset('images/hotels/W.png') }}'>
-  <p><a href='http://goo.gl/326Dnd'>Map</a> | 
-   <a href='#'>Book</a> |  {{-- Add to itinerary--}}
-   <a href='#'>Comment</a>
-   <p> <del><b><font color="red">NOTE !!! Only display this if user IS logged in.</font></b></del> </p>
-  </p>
-  </section>
+  <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+  <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  {{--<p> <del><b><font color="red">NOTE !!! Only display this if user is NOT logged in.</font></b></del> </p> --}}
+ </section>	
 @stop
