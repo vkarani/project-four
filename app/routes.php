@@ -19,6 +19,8 @@ Route::get('/', function()
 });
 
 
+
+
 /*List of Hotels*/
 Route::get('/hotels', function()
 {
@@ -199,3 +201,13 @@ Route::get('/logout', function() {
     return Redirect::to('/');
 
 });
+
+/*
+Route::get('/debug',function() {
+    
+    echo "Debug Messages... <br> <br>";
+
+    echo "Environment: ".App::environment();
+
+});
+*/
