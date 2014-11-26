@@ -202,7 +202,7 @@ Route::get('/logout', function() {
 
 });
 
-/*
+
 Route::get('/debug',function() {
     
     echo "Debug Messages... <br> <br>";
@@ -210,4 +210,4 @@ Route::get('/debug',function() {
     echo "Environment: ".App::environment();
 
 });
-*/
+
