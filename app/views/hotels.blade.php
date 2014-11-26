@@ -28,7 +28,7 @@ Attractions
   >
  <br>
  <p><a href='http://goo.gl/O1NfVZ'>Map</a> |
-  <a href='#'>Book</a> |  {{-- Add to itinerary--}}
+  <a href='#'>Add</a> |  {{-- Add to itinerary--}}
   <a href='#'>Comment</a>
  </p>
 </section>
@@ -39,7 +39,7 @@ Attractions
  <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
   src='{{ URL::asset('images/hotels/W.png') }}'>
  <p><a href='http://goo.gl/326Dnd'>Map</a> | 
-  <a href='#'>Book</a> |  {{-- Add to itinerary--}}
+  <a href='#'>Add</a> |  {{-- Add to itinerary--}}
   <a href='#'>Comment</a>
  </p>
  </section>

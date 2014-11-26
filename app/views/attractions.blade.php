@@ -28,7 +28,7 @@ Attractions
   >
  <br>
  <p><a href='http://goo.gl/1ci2qj'>Map</a> |
-  <a href='#'>Visit</a> |  {{-- Add to itinerary--}}
+  <a href='#'>Add</a> |  {{-- Add to itinerary--}}
   <a href='#'>Comment</a>
  </p>
 </section>
@@ -39,7 +39,7 @@ Attractions
  <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
   src='{{ URL::asset('images/attractions/Statue_of_Liberty.png') }}'>
  <p><a href='http://goo.gl/tNXFfC'>Map</a> | 
-  <a href='#'>Visit</a> |  {{-- Add to itinerary--}}
+  <a href='#'>Add</a> |  {{-- Add to itinerary--}}
   <a href='#'>Comment</a>
  </p>
  </section>
