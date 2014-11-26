@@ -11,22 +11,27 @@
 |
 */
 
-Route::get('/', function()
-{
-	//return View::make('hello');
-	return View::make('index');
-	//return "Main Landing page. Add links for Hotel and Attractions";
-});
-
-
-
+Route::get('/', 
+  //return "Display a list of all itineraries";
+  array(
+    'before' => 'guest',
+    function() {
+      return View::make('index');
+    }
+  )
+);
 
 /*List of Hotels*/
-Route::get('/hotels', function()
-{
-	return View::make('hotels');
-	//return "List of Available Hotels";
-});
+Route::get('/hotels', 
+  //return "Display a list of all itineraries";
+  array(
+    'before' => 'auth',
+    function() {
+      return View::make('hotels');
+    }
+  )
+); 
+	
 
 /*Admin console to add/edit a hotel*/
 /*get*/
@@ -51,11 +56,15 @@ Route::post('/hotels/edit/{name}', function()
 
 
 /*List of Attractions*/
-Route::get('/attractions', function()
-{
-	return View::make('attractions');
-	//return "List of Available Attractions";
-});
+Route::get('/attractions',
+  //return "Display a list of all itineraries";
+    array(
+      'before' => 'auth', //lock down route
+      function() {
+        return View::make('attractions');
+      }
+    )
+);
 
 /*Admin console to add/edit attractions*/
 /*get*/
@@ -99,11 +108,15 @@ Route::get('/seed-hotels-and-attractions-with-comments', function()
 Only a logged in user will be able to 
 visit ANY itinerary page.
 */
-Route::get('/itinerary', function()
-{
-   return View::make('itinerary');
-   //return "Display a list of all itineraries";
-});
+Route::get('/itinerary', 
+  //return "Display a list of all itineraries";
+  array(
+    'before' => 'auth',
+    function() {
+      return View::make('itinerary');
+    }
+  )
+);
 /*Add itinerary*/
 Route::get('/itinerary/add', function()
 {
