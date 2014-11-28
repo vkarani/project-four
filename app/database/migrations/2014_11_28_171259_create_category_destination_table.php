@@ -3,16 +3,16 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDestinationCategoryTable extends Migration {
+class CreateCategoryDestinationTable extends Migration {
 
   /**
    * Run the migrations.
    *
    * @return void
    */
-  public function up()
-  {
-    Schema::create('destination_category', function($table) {
+   public function up()
+   {
+    Schema::create('category_destination', function($table) {
       # AI, PK
       # none needed
       # General data...
@@ -24,16 +24,16 @@ class CreateDestinationCategoryTable extends Migration {
       $table->foreign('category_id')->references('id')->on('categories');
 			
     });
-  }
+   }
 
   /**
    * Reverse the migrations.
    *
    * @return void
    */
-  public function down()
-  {
-    Schema::drop('destination_category');
-  }
+   public function down()
+   {
+     Schema::drop('destination_category');
+    }
 
 }
