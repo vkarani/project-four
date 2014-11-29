@@ -24,7 +24,6 @@ Attractions
       @if(($category -> name)=='hotel')
         <section class='hotel'>
           <h2>{{ $destination -> name }}</h2>
-          <br>Type is {{$category -> name}}<br>
           <p>{{$destination -> description}}</p>
           <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
           {{--src=' {{ URL::asset('$destination -> link') }} '> --}}

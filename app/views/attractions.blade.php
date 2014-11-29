@@ -20,27 +20,20 @@ Attractions
 
 
 @section('content')
-<section class='attraction'>
- <h2>Central Park</h2>
- <p>An urban green space like no other</p>
- <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
-  src=' {{ URL::asset('images/attractions/Central_Park.png') }} '
-  >
- <br>
- <p><a href='http://goo.gl/1ci2qj'>Map</a> |
-  <a href='#'>Add</a> |  {{-- Add to itinerary--}}
-  <a href='#'>Comment</a>
- </p>
-</section>
-
-<section class='attraction'>
- <h2>Lady Liberty</h2>
- <p>Liberty Enlightens the world</p>
- <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
-  src='{{ URL::asset('images/attractions/Statue_of_Liberty.png') }}'>
- <p><a href='http://goo.gl/tNXFfC'>Map</a> | 
-  <a href='#'>Add</a> |  {{-- Add to itinerary--}}
-  <a href='#'>Comment</a>
- </p>
- </section>
+  @foreach($destinations as $destination)
+    @foreach($destination -> categories as $category)
+      @if(($category -> name)=='attraction')
+        <section class='attraction'>
+          <h2>{{ $destination -> name }}</h2>
+          <p>{{$destination -> description}}</p>
+          <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
+          {{--src=' {{ URL::asset('$destination -> link') }} '> --}}
+          src='{{$destination -> link}}'>
+          <p><a href='{{$destination -> map}}'>Map</a> |
+               <a href='#'>Add</a> |    
+               <a href='#'>Comment</a>
+        </section>
+      @endif
+    @endforeach
+  @endforeach  
 @stop

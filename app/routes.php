@@ -23,11 +23,11 @@ Route::get('/',
 
 /*List of Hotels*/
 Route::get('/hotels', 
-  //return "Display a list of all itineraries";
+  //return "Display a list of hotels";
   array(
     'before' => 'auth',
     function() {
-      //$destinations = Destination::all();  //TODO --make this ONLY pick hotels
+      //$destinations = Destination::all();
       $destinations = Destination::with('categories')->get();  
       if($destinations -> isEmpty()!= TRUE ){
       	return View::make('hotels')->with('destinations',$destinations);
@@ -65,12 +65,19 @@ Route::post('/hotels/edit/{name}', function()
 
 /*List of Attractions*/
 Route::get('/attractions',
-  //return "Display a list of all itineraries";
+  //return "Display a list of all attractions";
     array(
       'before' => 'auth', //lock down route
       function() {
-        return View::make('attractions');
+      $destinations = Destination::with('categories')->get();  
+      if($destinations -> isEmpty()!= TRUE ){
+      	return View::make('attractions')->with('destinations',$destinations);
+      } 
+      else{
+      	//TODO Make me better
+        return 'No Destinations Found';
       }
+    }
     )
 );
 
