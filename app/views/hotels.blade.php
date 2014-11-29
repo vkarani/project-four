@@ -18,29 +18,22 @@ Attractions
   <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
 @stop
 
-
 @section('content')
-<section class='hotel'>
- <h2>The Standard, High Line</h2>
- <p>Amazing views straddling a one of a kind elevated park</p>
- <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
-  src=' {{ URL::asset('images/hotels/Standard.png') }} '
-  >
- <br>
- <p><a href='http://goo.gl/O1NfVZ'>Map</a> |
-  <a href='#'>Add</a> |  {{-- Add to itinerary--}}
-  <a href='#'>Comment</a>
- </p>
-</section>
-
-<section class='hotel'>
- <h2>The W Hotel</h2>
- <p>Midtown and next to everything</p>
- <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
-  src='{{ URL::asset('images/hotels/W.png') }}'>
- <p><a href='http://goo.gl/326Dnd'>Map</a> | 
-  <a href='#'>Add</a> |  {{-- Add to itinerary--}}
-  <a href='#'>Comment</a>
- </p>
- </section>
+  @foreach($destinations as $destination)
+    @foreach($destination -> categories as $category)
+      @if(($category -> name)=='hotel')
+        <section class='hotel'>
+          <h2>{{ $destination -> name }}</h2>
+          <br>Type is {{$category -> name}}<br>
+          <p>{{$destination -> description}}</p>
+          <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
+          {{--src=' {{ URL::asset('$destination -> link') }} '> --}}
+          src='{{$destination -> link}}'>
+          <p><a href='{{$destination -> map}}'>Map</a> |
+               <a href='#'>Add</a> |    
+               <a href='#'>Comment</a>
+        </section>
+      @endif
+    @endforeach
+  @endforeach  
 @stop

@@ -27,7 +27,15 @@ Route::get('/hotels',
   array(
     'before' => 'auth',
     function() {
-      return View::make('hotels');
+      //$destinations = Destination::all();  //TODO --make this ONLY pick hotels
+      $destinations = Destination::with('categories')->get();  
+      if($destinations -> isEmpty()!= TRUE ){
+      	return View::make('hotels')->with('destinations',$destinations);
+      } 
+      else{
+      	//TODO Make me better
+        return 'No Destinations Found';
+      }
     }
   )
 ); 
@@ -170,7 +178,7 @@ Route::get('/itinerary',
 /*Add itinerary*/
 Route::get('/itinerary/add', function()
 {
-   return "Display form to create a new itinerary";
+  return "Display form to create a new itinerary";
 });
 /*post info for itinerary*/
 Route::post('/itinerary/add', function()
@@ -182,95 +190,88 @@ Route::post('/itinerary/add', function()
 
 /***Debug****/
 Route::get('/environment', function() {
-    echo App::environment();
- 
+  echo App::environment(); 
 });
 
 /**Signup**/
 Route::get('/signup',
-    array(
-        'before' => 'guest',
-        function() {
-            return View::make('signup');
-        }
-    )
+  array(
+    'before' => 'guest',
+    function() {
+      return View::make('signup');
+    }
+  )
 );
 
 Route::post('/signup', 
-    array(
-        'before' => 'csrf', 
-        function() {
+  array(
+    'before' => 'csrf', 
+    function() {
 
-            $user = new User;
-            $user->email    = Input::get('email');
-            $user->password = Hash::make(Input::get('password'));
+      $user = new User;
+      $user->email    = Input::get('email');
+      $user->password = Hash::make(Input::get('password'));
 
-            # Try to add the user 
-            try {
-                $user->save();
-            }
-            # Fail
-            catch (Exception $e) {
-                return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
-            }
+      # Try to add the user 
+      try {
+        $user->save();
+      }
+      # Fail
+      catch (Exception $e) {
+        return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
+      }
 
-            # Log the user in
-            Auth::login($user);
+      # Log the user in
+      Auth::login($user);
 
-            return Redirect::to('/attractions')->with('flash_message', 'Welcome to Foobooks!');
+      return Redirect::to('/attractions')->with('flash_message', 'Welcome to Foobooks!');
 
-        }
-    )
+    }
+  )
 );
 
 /**Login**/
 
 Route::get('/login',
-    array(
-        'before' => 'guest',
-        function() {
-            return View::make('login');
-        }
-    )
+  array(
+    'before' => 'guest',
+    function() {
+      return View::make('login');
+    }
+  )
 );
 
 
 Route::post('/login', 
-    array(
-        'before' => 'csrf', 
-        function() {
-
-            $credentials = Input::only('email', 'password');
-
-            if (Auth::attempt($credentials, $remember = true)) {
-                return Redirect::intended('/itinerary')->with('flash_message', 'Welcome Back!');
-            }
-            else {
-                return Redirect::to('/login')->with('flash_message', 'Log in failed; please try again.');
-            }
-
-            return Redirect::to('login');
-        }
-    )
+  array(
+    'before' => 'csrf', 
+    function() {
+      $credentials = Input::only('email', 'password');
+      if (Auth::attempt($credentials, $remember = true)) {
+        return Redirect::intended('/itinerary')->with('flash_message', 'Welcome Back!');
+      }
+      else {
+        return Redirect::to('/login')->with('flash_message', 'Log in failed; please try again.');
+      }
+      return Redirect::to('login');
+    }
+  )
 );
 
 
 Route::get('/logout', function() {
+  # Log out
+  Auth::logout();
 
-    # Log out
-    Auth::logout();
-
-    # Send them to the homepage
-    return Redirect::to('/');
+  # Send them to the homepage
+  return Redirect::to('/');
 
 });
 
 
 Route::get('/debug',function() {
-    
-    echo "Debug Messages... <br> <br>";
-    echo "Environment: ".App::environment();
-
+  echo "Debug Messages... <br> <br>";
+  echo "Environment: ".App::environment();
 });
 
 
@@ -278,13 +279,12 @@ Route::get('/debug',function() {
 TODO --> REMOVE ME BEFORE I GO LIVE
 */
 Route::get('/truncate', function() {
-
-    # Clear the tables to a blank slate
-    DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
-    DB::statement('TRUNCATE categories');
-    DB::statement('TRUNCATE destinations');
-    DB::statement('TRUNCATE category_destination');
-    echo "Truncated all Database records <br>";
+  # Clear the tables to a blank slate
+  DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
+  DB::statement('TRUNCATE categories');
+  DB::statement('TRUNCATE destinations');
+  DB::statement('TRUNCATE category_destination');
+  echo "Truncated all Database records <br>";
 });
 
 
