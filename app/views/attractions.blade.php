@@ -18,7 +18,6 @@ Attractions
   <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
 @stop
 
-
 @section('content')
   @foreach($destinations as $destination)
     @foreach($destination -> categories as $category)
