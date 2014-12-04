@@ -200,7 +200,20 @@ Route::get('/environment', function() {
   echo App::environment(); 
 });
 
+
+/**
+* User
+*/
+Route::get('/signup','UserController@getSignup' );
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/signup', 'UserController@postSignup' );
+Route::post('/login', 'UserController@postLogin' );
+Route::get('/logout', 'UserController@getLogout' );
+
+
+
 /**Signup**/
+/*
 Route::get('/signup',
   array(
     'before' => 'guest',
@@ -209,7 +222,8 @@ Route::get('/signup',
     }
   )
 );
-
+*/
+/*
 Route::post('/signup', 
   array(
     'before' => 'csrf', 
@@ -236,9 +250,10 @@ Route::post('/signup',
     }
   )
 );
+*/
 
 /**Login**/
-
+/*
 Route::get('/login',
   array(
     'before' => 'guest',
@@ -247,8 +262,9 @@ Route::get('/login',
     }
   )
 );
+*/
 
-
+/*
 Route::post('/login', 
   array(
     'before' => 'csrf', 
@@ -264,8 +280,9 @@ Route::post('/login',
     }
   )
 );
+*/
 
-
+/*
 Route::get('/logout', function() {
   # Log out
   Auth::logout();
@@ -274,6 +291,13 @@ Route::get('/logout', function() {
   return Redirect::to('/');
 
 });
+*/
+
+/**
+ * Debug...
+ * Various debug items...
+ */
+
 
 
 Route::get('/debug',function() {

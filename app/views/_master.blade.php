@@ -9,6 +9,10 @@
     @yield('styling') {{-- Extra css goes here --}}
   </head>
   <body>
+    {{-- Display Flash message if it exists --}}
+    @if(Session::get('flash_message'))
+        <div class='flash-message'>{{ Session::get('flash_message') }}</div>
+    @endif
     <!-- Navigate easily to everything -->
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
