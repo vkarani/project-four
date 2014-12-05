@@ -31,7 +31,7 @@ class UserController extends BaseController {
   public function postSignup(){
     #The rules
     $rules=array(
-      'email'=>'required|email|unique users,email',
+      'email'=>'required|email|unique:users,email',
       'password'=>'required|min:4',
     );
      
@@ -84,7 +84,7 @@ class UserController extends BaseController {
    public function postLogin(){
      //TODO ******* csrf?????
    	 $credentials = Input::only('email','password');
-   	 if (Auth::attempt($credentials, $remember = true)) {
+   	 if (Auth::attempt($credentials, $remember = false)) {
         return Redirect::intended('/itinerary')->with('flash_message', 'Welcome Back!');
      }
      else {

@@ -18,6 +18,16 @@ Route::get('/', 'IndexController@getIndex');
 
 
 /**
+* User
+*/
+Route::get('/signup','UserController@getSignup' );
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/signup', 'UserController@postSignup' );
+Route::post('/login', 'UserController@postLogin' );
+Route::get('/logout', 'UserController@getLogout' );
+
+
+/**
  * Hotels
  */
 /*List*/
@@ -39,6 +49,16 @@ Route::get('/attractions/create', 'AttractionController@getCreate');
 Route::post('/attractions/create', 'AttractionController@postCreate');	
 Route::get('/attractions/edit/{id}', 'AttractionController@getEdit');
 Route::post('/attractions/edit', 'AttractionController@postEdit');
+
+
+/**
+ * Itineraries
+ */                        
+Route::get('/itinerary', 'ItineraryController@getIndex');
+Route::get('/itinerary/create', 'ItineraryController@getCreate');
+Route::post('/itinerary/create', 'ItineraryController@postCreate');	
+Route::get('/itinerary/edit/{id}', 'ItineraryController@getEdit');
+Route::post('/itinerary/edit', 'ItineraryController@postEdit');
 
 
 /*Seed Hotels and attractions
@@ -108,47 +128,10 @@ Route::get('/seed-hotels-and-attractions-with-comments', function()
 
 });
 
-
-/*Display a summary of itineraries
-Only a logged in user will be able to 
-visit ANY itinerary page.
-*/
-Route::get('/itinerary', 
-  //return "Display a list of all itineraries";
-  array(
-    'before' => 'auth',
-    function() {
-      return View::make('itinerary');
-    }
-  )
-);
-/*Add itinerary*/
-Route::get('/itinerary/add', function()
-{
-  return "Display form to create a new itinerary";
-});
-/*post info for itinerary*/
-Route::post('/itinerary/add', function()
-{
-   
-});
-
-
-
 /***Debug****/
 Route::get('/environment', function() {
   echo App::environment(); 
 });
-
-
-/**
-* User
-*/
-Route::get('/signup','UserController@getSignup' );
-Route::get('/login', 'UserController@getLogin' );
-Route::post('/signup', 'UserController@postSignup' );
-Route::post('/login', 'UserController@postLogin' );
-Route::get('/logout', 'UserController@getLogout' );
 
 
 /**
@@ -170,6 +153,7 @@ Route::get('/truncate', function() {
   DB::statement('TRUNCATE categories');
   DB::statement('TRUNCATE destinations');
   DB::statement('TRUNCATE category_destination');
+  DB::statement('TRUNCATE users');
   echo "Truncated all Database records <br>";
 });
 
