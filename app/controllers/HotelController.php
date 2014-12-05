@@ -22,4 +22,38 @@ class HotelController extends BaseController {
       return 'No Destinations Found';
     }
   }
+
+  /**
+	* Show the "Add a Hotel form"
+	* @return View
+	*/  
+  public function getCreate(){
+  	
+  }
+  
+  /**
+	* Process the "Add a Hotel form"
+	* @return Redirect
+	*/
+  public function postCreate(){
+  	
+  }
+  
+  /**
+	* Show the "Edit a Hotel form"
+	* @return View
+	*/
+  public function getEdit(){
+  	
+  }
+  
+  /**
+	* Process the "Edit a Hotel form"
+	* @return Redirect
+	*/
+  public function postEdit(){
+  	
+  }
+  
+  
 }

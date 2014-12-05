@@ -17,36 +17,16 @@
 Route::get('/', 'IndexController@getIndex');
 
 
-
 /**
  * Hotels
  */
 /*List*/
 Route::get('/hotels', 'HotelController@getIndex');
- 
-
-	
-
-/*Admin console to add/edit a hotel*/
-/*get*/
-Route::get('/hotels/add', function()
-{
-	//return View::make('???');
-	return "Provide form to add a Hotel";
-});
-/*post*/
-Route::post('/hotels/add', function()
-{
-
-});
-Route::get('/hotels/edit/{name}', function()
-{
-	return "Form to edit hotel if it exists";
-});
-Route::post('/hotels/edit/{name}', function()
-{
-	
-});
+/*Admin only*/
+Route::get('/hotels/create', 'HotelController@getCreate');
+Route::post('/hotels/create', 'HotelController@postCreate');	
+Route::get('/hotel/edit/{id}', 'HotelController@getEdit');
+Route::post('/hotel/edit', 'HotelController@postEdit');
 
 
 /*List of Attractions*/
