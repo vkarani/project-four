@@ -11,6 +11,13 @@
 |
 */
 
+
+
+/**
+* Index
+*/
+Route::get('/', 'IndexController@getIndex');
+/*
 Route::get('/', 
   //return "Display a list of all itineraries";
   array(
@@ -20,6 +27,7 @@ Route::get('/',
     }
   )
 );
+*/
 
 /*List of Hotels*/
 Route::get('/hotels', 
@@ -211,95 +219,10 @@ Route::post('/login', 'UserController@postLogin' );
 Route::get('/logout', 'UserController@getLogout' );
 
 
-
-/**Signup**/
-/*
-Route::get('/signup',
-  array(
-    'before' => 'guest',
-    function() {
-      return View::make('signup');
-    }
-  )
-);
-*/
-/*
-Route::post('/signup', 
-  array(
-    'before' => 'csrf', 
-    function() {
-
-      $user = new User;
-      $user->email    = Input::get('email');
-      $user->password = Hash::make(Input::get('password'));
-
-      # Try to add the user 
-      try {
-        $user->save();
-      }
-      # Fail
-      catch (Exception $e) {
-        return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
-      }
-
-      # Log the user in
-      Auth::login($user);
-
-      return Redirect::to('/attractions')->with('flash_message', 'Welcome to Foobooks!');
-
-    }
-  )
-);
-*/
-
-/**Login**/
-/*
-Route::get('/login',
-  array(
-    'before' => 'guest',
-    function() {
-      return View::make('login');
-    }
-  )
-);
-*/
-
-/*
-Route::post('/login', 
-  array(
-    'before' => 'csrf', 
-    function() {
-      $credentials = Input::only('email', 'password');
-      if (Auth::attempt($credentials, $remember = true)) {
-        return Redirect::intended('/itinerary')->with('flash_message', 'Welcome Back!');
-      }
-      else {
-        return Redirect::to('/login')->with('flash_message', 'Log in failed; please try again.');
-      }
-      return Redirect::to('login');
-    }
-  )
-);
-*/
-
-/*
-Route::get('/logout', function() {
-  # Log out
-  Auth::logout();
-
-  # Send them to the homepage
-  return Redirect::to('/');
-
-});
-*/
-
 /**
  * Debug...
  * Various debug items...
  */
-
-
-
 Route::get('/debug',function() {
   echo "Debug Messages... <br> <br>";
   echo "Environment: ".App::environment();
@@ -319,4 +242,51 @@ Route::get('/truncate', function() {
 });
 
 
+Route::get('/unpacking-sessions-and-cookies', function() {
 
+    # Log in check
+    if(Auth::check())
+        echo "You are logged in: ".Auth::user();
+    else
+        echo "You are not logged in.";
+    echo "<br><br>";
+
+    # Cookies
+    echo "<h1>Your Raw, encrypted Cookies</h1>";
+    echo Paste\Pre::render($_COOKIE,'');
+
+    # Decrypted cookies
+    echo "<h1>Your Decrypted Cookies</h1>";
+    echo Paste\Pre::render(Cookie::get(),'');
+    echo "<br><br>";
+
+    # All Session files
+    echo "<h1>All Session Files</h1>";
+    $files = File::files(app_path().'/storage/sessions');
+
+    foreach($files as $file) {
+        if(strstr($file,Cookie::get('laravel_session'))) {
+            echo "<div style='background-color:yellow'><strong>YOUR SESSION FILE:</strong><br>";
+        }
+        else {
+            echo "<div>";
+        }
+        echo "<strong>".$file."</strong>:<br>".File::get($file)."<br>";
+        echo "</div><br>";
+    }
+
+    echo "<br><br>";
+
+    # Your Session Data
+    $data = Session::all();
+    echo "<h1>Your Session Data</h1>";
+    echo Paste\Pre::render($data,'Session data');
+    echo "<br><br>";
+
+    # Token
+    echo "<h1>Your CSRF Token</h1>";
+    echo Form::token();
+    echo "<script>document.querySelector('[name=_token]').type='text'</script>";
+    echo "<br><br>";
+
+});
