@@ -1,6 +1,6 @@
 <?php
 
-class HotelController extends BaseController {
+class AttractionController extends BaseController {
 	/** 
    * Constructor
    */
@@ -12,10 +12,10 @@ class HotelController extends BaseController {
   }
 
   public function getIndex(){
-    //$destinations = Destination::all();
-    $destinations = Destination::with('categories')->get();  
+    	
+  	$destinations = Destination::with('categories')->get();  
     if($destinations -> isEmpty()!= TRUE ){
-      return View::make('hotels')->with('destinations',$destinations);
+      return View::make('attractions')->with('destinations',$destinations);
     } 
     else{
       //TODO Make me better
@@ -24,7 +24,7 @@ class HotelController extends BaseController {
   }
 
   /**
-	* Show the "Add a Hotel form"
+	* Show the "Add an attraction form"
 	* @return View
 	*/  
   public function getCreate(){
@@ -32,7 +32,7 @@ class HotelController extends BaseController {
   }
   
   /**
-	* Process the "Add a Hotel form"
+	* Process the "Add an Attraction form"
 	* @return Redirect
 	*/
   public function postCreate(){
@@ -40,7 +40,7 @@ class HotelController extends BaseController {
   }
   
   /**
-	* Show the "Edit a Hotel form"
+	* Show the "Edit an Attraction form"
 	* @return View
 	*/
   public function getEdit(){
@@ -48,7 +48,7 @@ class HotelController extends BaseController {
   }
   
   /**
-	* Process the "Edit a Hotel form"
+	* Process the "Edit an Attraction form"
 	* @return Redirect
 	*/
   public function postEdit(){

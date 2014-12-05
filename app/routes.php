@@ -29,44 +29,18 @@ Route::get('/hotel/edit/{id}', 'HotelController@getEdit');
 Route::post('/hotel/edit', 'HotelController@postEdit');
 
 
-/*List of Attractions*/
-Route::get('/attractions',
-  //return "Display a list of all attractions";
-    array(
-      'before' => 'auth', //lock down route
-      function() {
-      $destinations = Destination::with('categories')->get();  
-      if($destinations -> isEmpty()!= TRUE ){
-      	return View::make('attractions')->with('destinations',$destinations);
-      } 
-      else{
-      	//TODO Make me better
-        return 'No Destinations Found';
-      }
-    }
-    )
-);
+/**
+ * Attractions
+ */
+/*List*/
+Route::get('/attractions', 'AttractionController@getIndex');
+/*Admin only*/
+Route::get('/attractions/create', 'AttractionController@getCreate');
+Route::post('/attractions/create', 'AttractionController@postCreate');	
+Route::get('/attractions/edit/{id}', 'AttractionController@getEdit');
+Route::post('/attractions/edit', 'AttractionController@postEdit');
 
-/*Admin console to add/edit attractions*/
-/*get*/
-Route::get('/attractions/add', function()
-{
 
-});
-/*post*/
-Route::post('/attractions/add', function()
-{
-
-});
-Route::get('/attractions/edit/{name}', function()
-{
-	return "Form to edit attraction if it exists";
-});
-Route::post('/attractions/edit/{name}', function()
-{
-	
-});
- 
 /*Seed Hotels and attractions
 ONLY admin can do this.
 */
