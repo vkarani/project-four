@@ -11,42 +11,20 @@
 |
 */
 
+/**
+ * Index
+ */
+Route::get('/', 'IndexController@getIndex');
+
 
 
 /**
-* Index
-*/
-Route::get('/', 'IndexController@getIndex');
-/*
-Route::get('/', 
-  //return "Display a list of all itineraries";
-  array(
-    'before' => 'guest',
-    function() {
-      return View::make('index');
-    }
-  )
-);
-*/
+ * Hotels
+ */
+/*List*/
+Route::get('/hotels', 'HotelController@getIndex');
+ 
 
-/*List of Hotels*/
-Route::get('/hotels', 
-  //return "Display a list of hotels";
-  array(
-    'before' => 'auth',
-    function() {
-      //$destinations = Destination::all();
-      $destinations = Destination::with('categories')->get();  
-      if($destinations -> isEmpty()!= TRUE ){
-      	return View::make('hotels')->with('destinations',$destinations);
-      } 
-      else{
-      	//TODO Make me better
-        return 'No Destinations Found';
-      }
-    }
-  )
-); 
 	
 
 /*Admin console to add/edit a hotel*/
