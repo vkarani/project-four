@@ -1,8 +1,10 @@
 @extends('_master')
 
+@section('styling')
+<link rel='stylesheet' href='/css/login_signup.css' type='text/css'>
+@stop
+
 @section('content')
-
-
 <section class='signup'>
  <h1>Sign up</h1>
 
