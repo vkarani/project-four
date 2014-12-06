@@ -7,7 +7,7 @@ class CreateCategoriesTable extends Migration {
 
   /**
    * Run the migrations.
-   *
+   * Categories table lists the kind of places i.e. hotel, park, e.t.c.
    * @return void
    */
   public function up()
@@ -22,7 +22,6 @@ class CreateCategoriesTable extends Migration {
           
       $table->string('name', 64);
     });
-    //
   }
 
   /**

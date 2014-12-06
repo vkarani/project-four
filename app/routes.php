@@ -61,11 +61,12 @@ Route::get('/itinerary/edit/{id}', 'ItineraryController@getEdit');
 Route::post('/itinerary/edit', 'ItineraryController@postEdit');
 
 
-/*Seed Hotels and attractions
-ONLY admin can do this.
-*/
-Route::get('/seed-hotels-and-attractions', function()
-{ #Create category --> Hotel
+/**
+ * Seed everything
+ */
+Route::get('/seed', function()
+{ #Hotels ...
+	#Create category --> Hotel
   $hotel = new Category();
   $hotel -> name ='hotel';
   $hotel -> save();
@@ -90,7 +91,7 @@ Route::get('/seed-hotels-and-attractions', function()
   $thew -> categories() -> attach ($hotel); 
   echo "Created 2 Hotels... <br>";
   
-  
+  #Attractions...
   #Create category --> Attraction
   $attraction = new Category();
   $attraction -> name ='attraction';
@@ -115,6 +116,39 @@ Route::get('/seed-hotels-and-attractions', function()
   $c_park -> save();
   $c_park -> categories() -> attach ($attraction);
   echo "Created 2 attractions... <br>";
+  
+  #Admin user
+  $user = new User;
+  $user->email = "admin@email.com";
+  $user->password = Hash::make("password");   
+  #Try to add admin user 
+  try {
+    $user->save();
+  }
+  #Fail
+  catch (Exception $e) {
+  	return "Failed to create Admin user";
+  }
+  
+  #Test user2
+  $user1 = new User;
+  $user1->email = "user1@email.com";
+  $user1->password = Hash::make("password");
+  #Try to add user user2 
+  try {
+    $user1->save();
+  }
+  #Fail
+  catch (Exception $e) {
+  	return "Failed to create user2";
+  }
+  
+  
+  #Create a new itinerary date
+  # TODO
+  
+  
+  
   
   echo "Seeding done";
 });

@@ -7,7 +7,7 @@ class CreateDestinationsTable extends Migration {
 
   /**
    * Run the migrations.
-   *
+   * Destinations table lists the name and some info about the destinations
    * @return void
    */
   public function up()

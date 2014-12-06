@@ -33,7 +33,7 @@ class CreateCategoryDestinationTable extends Migration {
    */
    public function down()
    {
-     Schema::drop('destination_category');
+     Schema::drop('category_destination');
     }
 
 }
