@@ -7,4 +7,7 @@ class Destination extends Eloquent {
    public function categories(){
      return $this -> belongsToMany('Category');
    }
+   public function visitdate(){
+     return $this -> belongsToMany('Visitdate');
+   }
 }

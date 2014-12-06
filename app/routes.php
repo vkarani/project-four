@@ -63,6 +63,11 @@ Route::post('/itinerary/edit', 'ItineraryController@postEdit');
 
 /**
  * Seed everything
+ * Hotels Done
+ * Attractions Done
+ * Admin and User1 Done
+ * Couple of itineraries for User1 <--- TODO
+ * Comments on Destinations <--- TODO
  */
 Route::get('/seed', function()
 { #Hotels ...
@@ -129,6 +134,7 @@ Route::get('/seed', function()
   catch (Exception $e) {
   	return "Failed to create Admin user";
   }
+  echo "Created Admin User <br>";
   
   #Test user2
   $user1 = new User;
@@ -142,25 +148,27 @@ Route::get('/seed', function()
   catch (Exception $e) {
   	return "Failed to create user2";
   }
+  echo "Created User user1 <br>";
   
+  #Create a new itinerary
+  $visitdate = new Visitdate;
+  $visitdate -> checkin_date = "2014-07-10 12:00:00";
+  $visitdate -> checkout_date = "2014-08-10 12:00:00";
+  $visitdate -> user() -> associate($user1);
+  $visitdate -> save();
+  $visitdate -> destination()->attach($standard);
+  echo "Created a stay at the standard hotel <br>";
   
-  #Create a new itinerary date
-  # TODO
-  
-  
-  
+  #Create another itinerary
+  $visitdate1 = new Visitdate;
+  $visitdate1 -> checkin_date = "2014-09-10 12:00:00";
+  $visitdate1 -> user() -> associate($user1);
+  $visitdate1 -> save();
+  $visitdate1 -> destination()->attach($c_park);
   
   echo "Seeding done";
 });
 
-
-/*Seed Hotels and attractions with comments and associated users
-ONLY admin can do this.
-*/
-Route::get('/seed-hotels-and-attractions-with-comments', function()
-{
-
-});
 
 /***Debug****/
 Route::get('/environment', function() {
@@ -188,55 +196,7 @@ Route::get('/truncate', function() {
   DB::statement('TRUNCATE destinations');
   DB::statement('TRUNCATE category_destination');
   DB::statement('TRUNCATE users');
+  DB::statement('TRUNCATE visitdates');
+  DB::statement('TRUNCATE destination_visitdate');
   echo "Truncated all Database records <br>";
-});
-
-
-Route::get('/unpacking-sessions-and-cookies', function() {
-
-    # Log in check
-    if(Auth::check())
-        echo "You are logged in: ".Auth::user();
-    else
-        echo "You are not logged in.";
-    echo "<br><br>";
-
-    # Cookies
-    echo "<h1>Your Raw, encrypted Cookies</h1>";
-    echo Paste\Pre::render($_COOKIE,'');
-
-    # Decrypted cookies
-    echo "<h1>Your Decrypted Cookies</h1>";
-    echo Paste\Pre::render(Cookie::get(),'');
-    echo "<br><br>";
-
-    # All Session files
-    echo "<h1>All Session Files</h1>";
-    $files = File::files(app_path().'/storage/sessions');
-
-    foreach($files as $file) {
-        if(strstr($file,Cookie::get('laravel_session'))) {
-            echo "<div style='background-color:yellow'><strong>YOUR SESSION FILE:</strong><br>";
-        }
-        else {
-            echo "<div>";
-        }
-        echo "<strong>".$file."</strong>:<br>".File::get($file)."<br>";
-        echo "</div><br>";
-    }
-
-    echo "<br><br>";
-
-    # Your Session Data
-    $data = Session::all();
-    echo "<h1>Your Session Data</h1>";
-    echo Paste\Pre::render($data,'Session data');
-    echo "<br><br>";
-
-    # Token
-    echo "<h1>Your CSRF Token</h1>";
-    echo Form::token();
-    echo "<script>document.querySelector('[name=_token]').type='text'</script>";
-    echo "<br><br>";
-
 });

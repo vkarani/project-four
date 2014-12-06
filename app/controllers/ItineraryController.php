@@ -12,6 +12,16 @@ class ItineraryController extends BaseController {
   }
 
   public function getIndex(){
+  	/*
+  	$destinations = Destination::with('categories')->get();  
+    if($destinations -> isEmpty()!= TRUE ){
+      return View::make('attractions')->with('destinations',$destinations);
+    } 
+    else{
+      //TODO Make me better
+      return 'No Destinations Found';
+    }
+    */
   	return View::make('itinerary');
   }
 
