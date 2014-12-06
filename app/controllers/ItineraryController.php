@@ -12,16 +12,30 @@ class ItineraryController extends BaseController {
   }
 
   public function getIndex(){
-  	
-  	$itinerary = Visitdate::with('destination')->get();  
+  	//DEBUG section here... get data from DB
+  	$itinerary = Visitdate::first();
+  	echo "The Checkin date is ".$itinerary -> checkin_date."<br>"; //DEBUG
+  	//echo Paste\Pre::render($itinerary -> destination() -> first() -> name); //DEBUG
+  	echo "The name of the destination is ".$itinerary -> destination() -> first() -> name."<br>";
+  	//echo Paste\Pre::render($itinerary -> destination -> first() -> categories()-> first()-> name); //DEBUG
+  	echo "The type of destination is ".$itinerary -> destination -> first() -> categories()-> first()-> name."<br>";
+  	//echo Paste\Pre::render($itinerary); //DEBUG
+  	return View::make('itinerary');//TODO send stuff to itinerary
+  	//DEBUG section above. get data from DB.
+  	/*
+//  	$itinerary = Visitdate::with('destination')->get();
+  	$itinerary = Visitdate::first();
     if($itinerary -> isEmpty()!= TRUE ){
       //return View::make('attractions')->with('destinations',$destinations);
-      return View::make('itinerary');
+      echo Paste\Pre::render($itinerary); //DEBUG
+//      echo $itinerary -> checkin_date;
+      return View::make('itinerary');//TODO send stuff to itinerary
     } 
     else{
       //TODO Make me better
       return 'No Itinerary Found';
     }
+    */
   }
 
   /**

@@ -164,8 +164,7 @@ Route::get('/seed', function()
   $visitdate1 -> checkin_date = "2014-09-10 12:00:00";
   $visitdate1 -> user() -> associate($user1);
   $visitdate1 -> save();
-  $visitdate1 -> destination()->attach($c_park);
-  
+  $visitdate1 -> destination()->attach($c_park);  
   echo "Seeding done";
 });
 
