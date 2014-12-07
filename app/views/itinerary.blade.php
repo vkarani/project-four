@@ -25,7 +25,7 @@ Attractions
 @section('content')
 
   @if(sizeof($itineraries) == 0)
-    <p>You do not have any Itineraries set up..</p>
+    <h2>You do not have any Itineraries set up..</h2>
   @else
     <h2>Here is your itinerary</h2>
     <table id="t01" class= "table table-hover table-striped table-responsive">
@@ -37,8 +37,6 @@ Attractions
       <th>Comments</th>
     </tr>
     @foreach($itineraries as $itinerary)
-      {{-- Select by the specific logged in user --}}
-      @if($itinerary -> user ->email==$email)
       <tr>
         {{--Hotel --}}
         @if($itinerary -> destination -> first() -> categories()-> first()-> name=='hotel')
@@ -57,7 +55,6 @@ Attractions
         @endif
         <td>This will have some comments...</td>
       </tr>
-      @endif
     @endforeach
     </table>
   @endif

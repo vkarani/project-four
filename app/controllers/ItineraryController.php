@@ -15,8 +15,12 @@ class ItineraryController extends BaseController {
   	//DEBUG ... Find logged in user
   	$email = Auth::user()->email;
   	//echo Paste\Pre::render($email);
+  	$userid = Auth::user()->id;
+  	//echo Paste\Pre::render($userid);
   	
-  	$itineraries = Visitdate::with('destination')->get(); //TODO <-- add query for user
+  	$itineraries = Visitdate::with('destination')
+  	               -> where('user_id',$userid)
+  	               ->get(); //TODO <-- add query for user
   	//DEBUG section here... get data from DB
   	/*
   	foreach($itineraries as $itinerary){
@@ -30,8 +34,8 @@ class ItineraryController extends BaseController {
   	*/
   	//DEBUG section above. get data from DB.
   	return View::make('itinerary')
-  	           ->with('itineraries', $itineraries)
-  	           ->with('email',$email);
+  	           ->with('itineraries', $itineraries);
+  	           //->with('email',$email);
   }
 
   /**
