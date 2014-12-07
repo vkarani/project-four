@@ -27,12 +27,20 @@ Itinerary
   <h1>Add a new visit...</h1>
 
 	{{ Form::open(array('url' => '/itinerary/create')) }}
-	
+	  {{--
+	   If I get time, I will come back and enable cases where a destination can be more than one thing 
+	   i.e. a Hotel and a restaurant.
 	  {{ Form::label('category','Category') }}
 		{{ Form::text('category'); }}
-     
+    --}} 
+    
+    {{ Form::label('destination_id', 'Place') }}
+		{{ Form::select('destination_id', $destinations); }}
+
+    {{--
 		{{ Form::label('name','Name') }}
 		{{ Form::text('name'); }}
+		--}}
 		
 		{{ Form::label('checkindate','Visit/Checkin Date') }}
 		{{ Form::text('checkindate'); }}

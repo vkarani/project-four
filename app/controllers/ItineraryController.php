@@ -45,7 +45,11 @@ class ItineraryController extends BaseController {
 	* @return View
 	*/  
   public function getCreate(){
-  	return View::make('itinerary_add');
+  	$destinations = Destination::getIdNamePair();
+  	echo Paste\Pre::render($destinations);
+    return View::make('itinerary_add')
+    	           ->with('destinations',$destinations);
+  	//return View::make('itinerary_add');
   }
   
   /**
