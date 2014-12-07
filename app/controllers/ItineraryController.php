@@ -12,9 +12,11 @@ class ItineraryController extends BaseController {
   }
 
   public function getIndex(){
-  	//DEBUG ... Find logged in user
-  	$email = Auth::user()->email;
-  	//echo Paste\Pre::render($email);
+  	/*
+  	//DEBUG ... Find logged in user    TODO remove
+  	$email = Auth::user()->email;      //TODO remove
+  	//echo Paste\Pre::render($email);  //TODO remove
+  	*/
   	$userid = Auth::user()->id;
   	//echo Paste\Pre::render($userid);
   	
@@ -43,7 +45,7 @@ class ItineraryController extends BaseController {
 	* @return View
 	*/  
   public function getCreate(){
-  	
+  	return View::make('itinerary_add');
   }
   
   /**

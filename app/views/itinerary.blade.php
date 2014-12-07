@@ -1,7 +1,7 @@
 @extends('_master')
 
 @section('title')
-Attractions
+Itinerary
 @stop
 
 @section('styling')
