@@ -37,6 +37,8 @@ Attractions
       <th>Comments</th>
     </tr>
     @foreach($itineraries as $itinerary)
+      {{-- Select by the specific logged in user --}}
+      @if($itinerary -> user ->email==$email)
       <tr>
         {{--Hotel --}}
         @if($itinerary -> destination -> first() -> categories()-> first()-> name=='hotel')
@@ -55,6 +57,7 @@ Attractions
         @endif
         <td>This will have some comments...</td>
       </tr>
+      @endif
     @endforeach
     </table>
   @endif

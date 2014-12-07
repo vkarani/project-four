@@ -113,13 +113,13 @@ Route::get('/seed', function()
   $c_park -> categories() -> attach ($attraction);
   
   #Create Attraction --> Statue of Liberty
-  $c_park = new Destination();
-  $c_park -> name = 'Lady Liberty';
-  $c_park -> description = 'Liberty Enlightens the world';
-  $c_park -> map = 'http://goo.gl/tNXFfC';
-  $c_park -> link = 'images/attractions/Statue_of_Liberty.png';
-  $c_park -> save();
-  $c_park -> categories() -> attach ($attraction);
+  $liberty = new Destination();
+  $liberty -> name = 'Lady Liberty';
+  $liberty -> description = 'Liberty Enlightens the world';
+  $liberty -> map = 'http://goo.gl/tNXFfC';
+  $liberty -> link = 'images/attractions/Statue_of_Liberty.png';
+  $liberty -> save();
+  $liberty -> categories() -> attach ($attraction);
   echo "Created 2 attractions... <br>";
   
   #Admin user
@@ -136,19 +136,34 @@ Route::get('/seed', function()
   }
   echo "Created Admin User <br>";
   
-  #Test user2
+  #Test user1
   $user1 = new User;
   $user1->email = "user1@email.com";
   $user1->password = Hash::make("password");
-  #Try to add user user2 
+  #Try to add user user1 
   try {
     $user1->save();
   }
   #Fail
   catch (Exception $e) {
-  	return "Failed to create user2";
+  	return "Failed to create user1";
   }
   echo "Created User user1 <br>";
+  
+  #Test user2
+  $user2 = new User;
+  $user2->email = "user2@email.com";
+  $user2->password = Hash::make("password");
+  #Try to add user user1 
+  try {
+    $user2->save();
+  }
+  #Fail
+  catch (Exception $e) {
+  	return "Failed to create user2";
+  }
+  echo "Created User user2 <br>";
+  
   
   #Create a new itinerary
   $visitdate = new Visitdate;
@@ -165,8 +180,35 @@ Route::get('/seed', function()
   $visitdate1 -> user() -> associate($user1);
   $visitdate1 -> save();
   $visitdate1 -> destination()->attach($c_park);  
+  echo "Created a trip to central park <br>";
+
+  #Create another itinerary
+  $visitdate2 = new Visitdate;
+  $visitdate2 -> checkin_date = "2014-10-10 12:00:00";
+  $visitdate2 -> checkout_date = "2014-11-10 12:00:00";
+  $visitdate2 -> user() -> associate($user2);
+  $visitdate2 -> save();
+  $visitdate2 -> destination()->attach($thew);
+  echo "Created a stay at the W <br>";  
+  
+  #Create another itinerary
+  $visitdate3 = new Visitdate;
+  $visitdate3 -> checkin_date = "2014-09-10 12:00:00";
+  $visitdate3 -> user() -> associate($user2);
+  $visitdate3 -> save();
+  $visitdate3 -> destination()->attach($liberty);  
+  echo "Created a trip to central park <br>";
+  
   echo "Seeding done";
+  
+  
+
 });
+
+
+
+
+
 
 
 /***Debug****/
