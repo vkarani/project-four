@@ -46,7 +46,7 @@ class ItineraryController extends BaseController {
 	*/  
   public function getCreate(){
   	$destinations = Destination::getIdNamePair();
-  	echo Paste\Pre::render($destinations);
+  	//echo Paste\Pre::render($destinations); //DEBUG
     return View::make('itinerary_add')
     	           ->with('destinations',$destinations);
   	//return View::make('itinerary_add');
@@ -57,7 +57,73 @@ class ItineraryController extends BaseController {
 	* @return Redirect
 	*/
   public function postCreate(){
-  	
+    //echo Paste\Pre::render($_POST); //DEBUG
+
+    //Validation
+    $data= Input::all();
+    /*checkindate, time mandatory
+      All dates and times must have proper format
+    */
+    $rules = array(
+      'checkindate'  => 'required|date_format:Y-n-d',
+      'checkintime'  => 'required|date_format:H:i',
+      'checkoutdate' => 'date_format:Y-n-d',
+      'checkouttime'  => 'date_format:H:i'
+    );
+    
+    $validator = Validator::make($data, $rules);
+    
+    if ($validator->passes()) {
+    	//echo "pass <br>"; //DEBUG
+      //Destination
+      // Validation for destination_id done using findOrFail
+      try {
+	      $destination = Destination::findOrFail(Input::get('destination_id'));
+	      //echo Paste\Pre::render($destination); //DEBUG
+	    }
+	    catch(exception $e) {
+	      return Redirect::to('/itinerary')->with('flash_message', 'The selected Destination was not found');
+	    }
+	    /*
+	    //checkindate
+	    echo Paste\Pre::render(Input::get('checkindate')); //DEBUG
+	    //checkintime
+	    echo Paste\Pre::render(Input::get('checkintime')); //DEBUG
+	    //checkoutdate
+	    echo Paste\Pre::render(Input::get('checkoutdate')); //DEBUG
+	    //checkouttime
+	    echo Paste\Pre::render(Input::get('checkouttime')); //DEBUG
+	    */
+	    $checkindatetime=Input::get('checkindate').' '.Input::get('checkintime').':00';
+	    //echo $checkindatetime."<br>";//DEBUG
+	    
+	    $checkoutdatetime=NULL;
+	    if((Input::get('checkoutdate')!=NULL)&&(Input::get('checkouttime')!=NULL)){
+	      $checkoutdatetime=Input::get('checkoutdate').' '.Input::get('checkouttime').':00';
+	      //echo $checkoutdatetime."<br>";//DEBUG
+	    }
+	    //Create the visit Model and save it
+	    $visitdate = new Visitdate;
+	    //Checkin datetime
+      $visitdate -> checkin_date = $checkindatetime;
+      //Checkout datetime
+      if($checkoutdatetime!=NULL){
+      	$visitdate -> checkout_date = $checkoutdatetime;
+      }
+      //Associate with logged in user
+      $user = Auth::user();
+  	  //echo Paste\Pre::render($userid);//DEBUG
+      $visitdate -> user() -> associate($user);
+      $visitdate -> save();
+      //Attach to the destination
+      $visitdate -> destination()->attach($destination);
+      //echo "Created a new stay <br>";//DEBUG
+	    
+	    return Redirect::action('ItineraryController@getIndex')
+  	                 ->with('flash_message','Your visit was added to your Itinerary.');
+  	  
+    }
+                 
   }
   
   /**

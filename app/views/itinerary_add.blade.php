@@ -26,6 +26,14 @@ Itinerary
 @section('content')
   <h1>Add a new visit...</h1>
 
+  {{--
+  	Need Category -> hotel/attraction (select)
+	  Name -> Central Park/etc (select)
+	  Date from -> Mandatory
+	  Date to -> only for Hotel
+  --}}
+  
+  
 	{{ Form::open(array('url' => '/itinerary/create')) }}
 	  {{--
 	   If I get time, I will come back and enable cases where a destination can be more than one thing 
@@ -36,39 +44,40 @@ Itinerary
     
     {{ Form::label('destination_id', 'Place') }}
 		{{ Form::select('destination_id', $destinations); }}
-
+    <br>
     {{--
 		{{ Form::label('name','Name') }}
 		{{ Form::text('name'); }}
 		--}}
 		
+		{{--
 		{{ Form::label('checkindate','Visit/Checkin Date') }}
 		{{ Form::text('checkindate'); }}
-		
+		{{ Form::label('checkintime','Visit/Checkin Time') }}
+		{{ Form::text('checkintime'); }}
+		--}}
+				
+		<label for="checkindate">Visit/Checkin Date</label>
+		<input name="checkindate" type="date" id="checkindate">
+
+		<label for="checkintime">Visit/Checkin Time</label>
+		<input name="checkintime" type="time" id="checkintime">
+    <br>
+
+		{{--
 		{{ Form::label('checkoutdate','Checkout Date') }}
 		{{ Form::text('checkoutdate'); }}
-{{--
-	  Need Category -> hotel/attraction (select)
-	  Name -> Central Park/etc (select)
-	  Date from -> Mandatory
-	  Date to -> only for Hotel
-	  
-	
-		{{ Form::label('title','Title') }}
-		{{ Form::text('title'); }}
+		
+		{{ Form::label('checkouttime','Checkout Time') }}
+		{{ Form::text('checkouttime'); }}
+		--}}
+		<label for="checkoutdate">Checkout Date</label>
+		<input name="checkoutdate" type="date" id="checkoutdate">
+		
+		<label for="checkouttime">Checkout Time</label>
+		<input name="checkouttime" type="time" id="checkouttime">
+		<br>
 
-		{{ Form::label('author_id', 'Author') }}
-		{{ Form::select('author_id', $authors); }}
-
-		{{ Form::label('published','Published Year (YYYY)') }}
-		{{ Form::text('published'); }}
-
-		{{ Form::label('cover','Cover Image URL') }}
-		{{ Form::text('cover'); }}
-
-		{{ Form::label('purchase_link','Purchase Link URL') }}
-		{{ Form::text('purchase_link'); }}
---}}
 		{{ Form::submit('Add'); }}
 
 	{{ Form::close() }}
