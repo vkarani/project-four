@@ -29,7 +29,8 @@ Attractions
           {{--src=' {{ URL::asset('$destination -> link') }} '> --}}
           src='{{$destination -> link}}'>
           <p><a href='{{$destination -> map}}'>Map</a> |
-               <a href='#'>Add</a> |    
+               <a href='/itinerary/create'>Add</a> |
+               {{-- TODO Bonus ... pass the destination id to the itinerary create form --}}
                <a href='#'>Comment</a>
         </section>
       @endif
