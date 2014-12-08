@@ -123,7 +123,9 @@ class ItineraryController extends BaseController {
   	                 ->with('flash_message','Your visit was added to your Itinerary.');
   	  
     }
-                 
+    return Redirect::to('/itinerary/create')
+           ->withInput()
+           ->withErrors($validator);             
   }
   
   /**

@@ -57,6 +57,9 @@ Itinerary
     @endforeach
     </table>
   @endif
+  <form method="link" action="/itinerary/create">
+    <input type="submit" value="Add a new Item">
+  </form>
 @stop
 
 

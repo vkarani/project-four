@@ -40,7 +40,10 @@ Itinerary
 	   i.e. a Hotel and a restaurant.
 	  {{ Form::label('category','Category') }}
 		{{ Form::text('category'); }}
-    --}} 
+    --}}
+    
+    
+    
     
     {{ Form::label('destination_id', 'Place') }}
 		{{ Form::select('destination_id', $destinations); }}
@@ -56,10 +59,20 @@ Itinerary
 		{{ Form::label('checkintime','Visit/Checkin Time') }}
 		{{ Form::text('checkintime'); }}
 		--}}
-				
+		
+		<ul class="errors">
+    @foreach($errors->get('checkindate') as $message)
+        <li>{{ $message }}</li>
+    @endforeach
+    </ul>		
 		<label for="checkindate">Visit/Checkin Date</label>
 		<input name="checkindate" type="date" id="checkindate">
 
+		<ul class="errors">
+    @foreach($errors->get('checkintime') as $message)
+        <li>{{ $message }}</li>
+    @endforeach
+    </ul>
 		<label for="checkintime">Visit/Checkin Time</label>
 		<input name="checkintime" type="time" id="checkintime">
     <br>
@@ -71,9 +84,20 @@ Itinerary
 		{{ Form::label('checkouttime','Checkout Time') }}
 		{{ Form::text('checkouttime'); }}
 		--}}
+		
+		<ul class="errors">
+    @foreach($errors->get('checkoutdate') as $message)
+        <li>{{ $message }}</li>
+    @endforeach
+    </ul>
 		<label for="checkoutdate">Checkout Date</label>
 		<input name="checkoutdate" type="date" id="checkoutdate">
 		
+		<ul class="errors">
+    @foreach($errors->get('checkouttime') as $message)
+        <li>{{ $message }}</li>
+    @endforeach
+    </ul>
 		<label for="checkouttime">Checkout Time</label>
 		<input name="checkouttime" type="time" id="checkouttime">
 		<br>
