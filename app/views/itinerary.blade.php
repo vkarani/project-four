@@ -34,6 +34,7 @@ Itinerary
       <th>Date From</th>		
       <th>Date To</th>
       <th>Comments</th>
+      <th>Delete</th>
     </tr>
     @foreach($itineraries as $itinerary)
       <tr>
@@ -52,7 +53,20 @@ Itinerary
         @else
           <td></td>
         @endif
-        <td>This will have some comments...</td>
+        <td>Add comments...</td>
+        
+        {{-- Delete --}}
+        <td>
+        {{--
+          {{$itinerary -> id}}  
+          DEBUG. works.
+        --}}
+
+        {{ Form::open(['method' => 'DELETE', 'action' => ['ItineraryController@postDelete', $itinerary -> id]]) }}
+		      <a href='javascript:void(0)' onClick='parentNode.submit();return false;' class="btn btn-danger" >Delete</a>
+	      {{ Form::close() }}
+	      
+        <td>
       </tr>
     @endforeach
     </table>
@@ -61,7 +75,3 @@ Itinerary
     <input type="submit" value="Add a new Item">
   </form>
 @stop
-
-
-
-

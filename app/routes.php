@@ -59,7 +59,8 @@ Route::get('/itinerary/create', 'ItineraryController@getCreate');
 Route::post('/itinerary/create', 'ItineraryController@postCreate');	
 Route::get('/itinerary/edit/{id}', 'ItineraryController@getEdit');
 Route::post('/itinerary/edit', 'ItineraryController@postEdit');
-Route::post('/itinerary/delete', 'ItineraryController@postDelete');
+Route::post('/itinerary/delete/{id}', 'ItineraryController@postDelete');
+Route::delete('/itinerary/delete/{id}', 'ItineraryController@destroy');
 
 /**
  * Seed everything

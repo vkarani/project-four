@@ -23,6 +23,8 @@ class ItineraryController extends BaseController {
   	$itineraries = Visitdate::with('destination')
   	               -> where('user_id',$userid)
   	               ->get(); //TODO <-- add query for user
+  	//echo Paste\Pre::render($itineraries);//DEBUG
+  	
   	//DEBUG section here... get data from DB
   	/*
   	foreach($itineraries as $itinerary){
@@ -146,12 +148,62 @@ class ItineraryController extends BaseController {
   
   
   /**
+  * Confirm Itinerary Deletion
+  * 
+  */
+  public function getDelete(){
+  	echo Paste\Pre::render($_GET); //DEBUG
+  	echo Paste\Pre::render($_POST);
+  	//TODO....
+  }
+  
+  
+  /**
 	* Process itinerary deletion
 	*
 	* @return Redirect
 	*/
+	
   public function postDelete() {
+  	echo Paste\Pre::render($_POST); //DEBUG
+  	/*
+  	// Handle the delete confirmation.
+    $id = Input::get('game');
+    $game = Game::findOrFail($id);
+    $game->delete();
+
+    return Redirect::action('GamesController@index');
   	
+  	
+  	try {
+	    $visitdate = Visitdate::findOrFail(Input::get('id'));
+	  }
+	  catch(exception $e) {
+	    return Redirect::to('/itinerary/')->with('flash_message', 'Could not delete itinerary item - not found.');
+	  }
+	  Visitdate::destroy(Input::get('id'));
+	  return Redirect::to('/itinerary/')->with('flash_message', 'Itinerary item deleted.');
+	  */
   }
+  
+  
+  /**
+	* Process itinerary deletion
+	*
+	* @return Redirect
+	*/
+	
+  public function destroy($id) {
+  	try {
+	    $visitdate = Visitdate::findOrFail($id);
+	  }
+	  catch(exception $e) {
+	    return Redirect::to('/itinerary/')->with('flash_message', 'Could not delete itinerary item - not found.');
+	  }
+	  Visitdate::destroy($id);
+	  return Redirect::to('/itinerary/')->with('flash_message', 'Itinerary item deleted.');
+  }
+  
+  
   
 }

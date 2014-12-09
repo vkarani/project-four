@@ -9,4 +9,13 @@ class Visitdate extends Eloquent {
   public function destination(){
      return $this -> belongsToMany('Destination');
    }
+   
+  # Model events...
+	# http://laravel.com/docs/eloquent#model-events
+	public static function boot() {
+    parent::boot();
+    static::deleting(function($visitdate) {
+            DB::statement('DELETE FROM destination_visitdate WHERE visitdate_id = ?', array($visitdate->id));
+    });
+	} 
 }
