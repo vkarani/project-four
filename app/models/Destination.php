@@ -17,6 +17,14 @@ class Destination extends Eloquent {
    }
    
    /**
+   * Destination HasMany Comments
+   */
+   public function comment(){
+     return $this -> hasMany('Comment');
+   }
+   
+   
+   /**
    * Returns a key=>value pair of destination id => destination name
    */
    public static function getIdNamePair() {

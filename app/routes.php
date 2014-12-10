@@ -164,7 +164,23 @@ Route::get('/seed', function()
   	return "Failed to create user2";
   }
   echo "Created User user2 <br>";
+
+
+  #User1 comments on Lady Liberty
+  $l_comment =  new Comment;
+  $l_comment -> comment = "Great and historic but SO many tourists";
+  $l_comment -> user() -> associate($user1);
+  $l_comment -> destination() -> associate($liberty);
+  $l_comment -> save();
+  echo "user1 comments on Lady Liberty <br>";
   
+  #User1 comments on Lady Liberty
+  $c_comment =  new Comment;
+  $c_comment -> comment = "I almost got run over by a rabid cyclist! Didn't even stop. Where is the justice?";
+  $c_comment -> user() -> associate($user1);
+  $c_comment -> destination() -> associate($c_park);
+  $c_comment -> save();
+  echo "user1 comments on central park <br>";  
   
   #Create a new itinerary
   $visitdate = new Visitdate;
@@ -201,15 +217,7 @@ Route::get('/seed', function()
   echo "Created a trip to central park <br>";
   
   echo "Seeding done";
-  
-  
-
 });
-
-
-
-
-
 
 
 /***Debug****/
@@ -231,6 +239,7 @@ Route::get('/debug',function() {
 /*
 TODO --> REMOVE ME BEFORE I GO LIVE
 */
+/*
 Route::get('/truncate', function() {
   # Clear the tables to a blank slate
   DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
@@ -242,3 +251,4 @@ Route::get('/truncate', function() {
   DB::statement('TRUNCATE destination_visitdate');
   echo "Truncated all Database records <br>";
 });
+*/
