@@ -62,6 +62,16 @@ Route::post('/itinerary/edit', 'ItineraryController@postEdit');
 Route::post('/itinerary/delete/{id}', 'ItineraryController@postDelete');
 Route::delete('/itinerary/delete/{id}', 'ItineraryController@destroy');
 
+
+/**
+ * Comments
+ */
+Route::get('/comments/user/{id}', 'CommentController@getListUser');
+Route::get('/comments/destination/{id}', 'CommentController@getListDestination');
+ 
+ 
+
+
 /**
  * Seed everything
  * Hotels Done
