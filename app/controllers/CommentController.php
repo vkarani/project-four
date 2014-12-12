@@ -36,7 +36,26 @@ class CommentController extends BaseController {
 	
 	//List all comments for a particular desination
   public function getListDestination($id){
-  	return "TBD";
+  	try {
+		  $destination = Destination::findOrFail($id);
+		  $comments = $destination-> comment;
+		  //$authors = Author::getIdNamePair();
+		}
+		catch(exception $e) {
+		  return Redirect::to('/attractions')->with('flash_message', 'Destination does not exist');
+		}
+		/*
+		echo Paste\Pre::render($comments);//DEBUG
+		echo Paste\Pre::render($destination->name);//DEBUG
+		
+		foreach($comments as $comment){
+			echo Paste\Pre::render($comment -> comment);//DEBUG
+			//echo Paste\Pre::render($comment -> destination -> name);//DEBUG
+		}
+		*/
+  	
+  	return View::make('destination_comment')
+               ->with('comments', $comments)
+               ->with('destination', $destination) ;
   }
-  
 }

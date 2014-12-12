@@ -184,13 +184,35 @@ Route::get('/seed', function()
   $l_comment -> save();
   echo "user1 comments on Lady Liberty <br>";
   
-  #User1 comments on Lady Liberty
+  #User1 comments on central park
   $c_comment =  new Comment;
   $c_comment -> comment = "I almost got run over by a rabid cyclist! Didn't even stop. Where is the justice?";
   $c_comment -> user() -> associate($user1);
   $c_comment -> destination() -> associate($c_park);
   $c_comment -> save();
   echo "user1 comments on central park <br>";  
+
+  $c_comment1 =  new Comment;
+  $c_comment1 -> comment = "Good for people watching.";
+  $c_comment1 -> user() -> associate($user1);
+  $c_comment1 -> destination() -> associate($c_park);
+  $c_comment1 -> save();
+  echo "user1 comments on central park. Again. <br>";  
+
+  $c_comment2 =  new Comment;
+  $c_comment2 -> comment = "Looks like the Tavern on the green is shuttered. Sad.";
+  $c_comment2 -> user() -> associate($user1);
+  $c_comment2 -> destination() -> associate($c_park);
+  $c_comment2 -> save();
+  echo "user1 comments on central park. Again and Again. <br>"; 
+  
+  $c_comment3 =  new Comment;
+  $c_comment3 -> comment = "Looks like the Tavern on the green is shuttered. Sad.";
+  $c_comment3 -> user() -> associate($user2);
+  $c_comment3 -> destination() -> associate($c_park);
+  $c_comment3 -> save();
+  echo "user3 comments on central park. Again and Again. <br>";
+  
   
   #Create a new itinerary
   $visitdate = new Visitdate;
