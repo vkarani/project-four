@@ -54,7 +54,9 @@ Itinerary
         @else
           <td></td>
         @endif
-        <td>Add comments...</td>
+        <td>
+        <a href='/comments/destination/{{$itinerary -> destination() -> first() -> id}}' class="btn btn-default">Comments</a>
+        </td>
         
         {{-- Delete --}}
         <td>
