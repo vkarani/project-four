@@ -31,7 +31,7 @@ Attractions
           <p><a href='{{$destination -> map}}'>Map</a> |
                <a href='/itinerary/create'>Add</a> |
                {{-- TODO Bonus ... pass the destination id to the itinerary create form --}}
-               <a href='#'>Comment</a>
+               <a href='/comments/destination/{{$destination -> id}}'>Comment</a>
         </section>
       @endif
     @endforeach

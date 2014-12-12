@@ -30,7 +30,7 @@ Attractions
           src='{{$destination -> link}}'>
           <p><a href='{{$destination -> map}}'>Map</a> |
                <a href='/itinerary/create'>Add</a> |    
-               <a href='#'>Comment</a>
+               <a href='/comments/destination/{{$destination -> id}}'>Comment</a>
         </section>
       @endif
     @endforeach
