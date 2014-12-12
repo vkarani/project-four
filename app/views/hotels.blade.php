@@ -12,6 +12,7 @@ Attractions
   <li><a href="/hotels">Hotels</a></li>
   <li><a href="/attractions">Attractions</a></li>
   <li><a href="/itinerary">Itinerary</a></li>
+  <li><a href="/comments/user/{{Auth::user() -> id}}">Comments</a></li>
 @stop
 
 @section('user_session')
@@ -31,7 +32,7 @@ Attractions
           <p><a href='{{$destination -> map}}'>Map</a> |
                <a href='/itinerary/create'>Add</a> |
                {{-- TODO Bonus ... pass the destination id to the itinerary create form --}}
-               <a href='/comments/destination/{{$destination -> id}}'>Comment</a>
+               <a href='/comments/destination/{{$destination -> id}}'>Comments</a>
         </section>
       @endif
     @endforeach

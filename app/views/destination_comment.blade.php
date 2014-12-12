@@ -12,6 +12,7 @@ Itinerary
   <li><a href="/hotels">Hotels</a></li>
   <li><a href="/attractions">Attractions</a></li>
   <li><a href="/itinerary">Itinerary</a></li>
+  <li><a href="/comments/user/{{Auth::user() -> id}}">Comments</a></li>
 @stop
 
 @section('user_session')

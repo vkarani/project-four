@@ -12,6 +12,7 @@ Itinerary
   <li><a href="/hotels">Hotels</a></li>
   <li><a href="/attractions">Attractions</a></li>
   <li><a href="/itinerary">Itinerary</a></li>
+  <li><a href="/comments/user/{{Auth::user() -> id}}">Comments</a></li>
 @stop
 
 @section('user_session')
@@ -24,7 +25,8 @@ Itinerary
 
 @section('content')
   {{-- TODO check for zero size user collection --}}
-  <h1>Here are all the comments for user:- {{$user -> email }}...</h1>
+  {{-- <h1>Here are all the comments for user:- {{$user -> email }}...</h1> --}}
+  <h1>Here are your comments...</h1>
 
   <table id="t01" class= "table table-hover table-striped table-responsive">
     <tr>
