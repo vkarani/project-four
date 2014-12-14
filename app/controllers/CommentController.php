@@ -58,4 +58,70 @@ class CommentController extends BaseController {
                ->with('comments', $comments)
                ->with('destination', $destination) ;
   }
+  
+  //Form to add a comment for a destination
+  public function getEdit($id){
+  	try {
+		  $destination = Destination::findOrFail($id);
+		  //$comments = $destination-> comment;
+		  //$authors = Author::getIdNamePair();
+		}
+		catch(exception $e) {
+		  return Redirect::to('/attractions')->with('flash_message', 'Destination does not exist');
+		}
+		
+		return View::make('comment')
+               ->with('destination', $destination) ;
+		
+  }
+  
+  //Handle the post. Add comment to the db.
+  public function postEdit(){
+  	echo Paste\Pre::render($_POST); //DEBUG
+  	
+  	//Validation
+    $data= Input::all();
+    /*comment required, at least 10 char
+      destination_id required
+    */
+    $rules = array(
+      'comment'  => 'required|min:10',
+      'destination_id'  => 'required|numeric'
+    );
+    
+    $validator = Validator::make($data, $rules);
+    
+    if ($validator->passes()) {
+    	//echo "pass <br>"; //DEBUG
+    	//get the destination from db as object
+    	try {
+	      $destination = Destination::findOrFail(Input::get('destination_id'));
+	      //echo Paste\Pre::render($destination); //DEBUG
+	    }
+	    catch(exception $e) {
+	      return Redirect::to('/itinerary')->with('flash_message', 'The selected Destination was not found');
+	    }
+	    //get the comment from the post
+	    $comment=Input::get('comment');
+	    
+	    $c1 =  new Comment;
+      $c1 -> comment = $comment;
+      $c1 -> user() -> associate(Auth::user());
+      $c1 -> destination() -> associate($destination);
+      $c1 -> save();
+      
+      return Redirect::to('/comments/user/'.Auth::user()->id)
+  	                 ->with('flash_message','Your comment for '.$destination -> name.' was added.');
+	    
+      /*
+      return Redirect::action('ItineraryController@getIndex')
+  	                 ->with('flash_message','Your comment for '.$destination -> name.' was added.');
+  	                 */
+    }
+    return Redirect::to('/comments/destination/add/'.Input::get('destination_id'))
+           ->withInput()
+           ->withErrors($validator)
+           ->with('flash_message','Please fix the errors and resubmit'); 
+  }
+  
 }

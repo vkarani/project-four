@@ -12,12 +12,12 @@
 
     Email<br>
     {{ Form::text('email') }}<br>
-    <del><b><font color="red">user1@email.com</font></b></del>
+    {{--<del><b><font color="red">user1@email.com</font></b></del>--}}
     <br>
 
     Password:<br>
     {{ Form::password('password') }}<br>
-    <del><b><font color="red">password</font></b></del>
+    {{--<del><b><font color="red">password</font></b></del>--}}
     <br>
 
     {{ Form::submit('Submit') }}

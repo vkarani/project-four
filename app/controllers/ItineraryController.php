@@ -127,7 +127,8 @@ class ItineraryController extends BaseController {
     }
     return Redirect::to('/itinerary/create')
            ->withInput()
-           ->withErrors($validator);             
+           ->withErrors($validator)
+           ->with('flash_message','Please fix the errors and resubmit');             
   }
   
   /**

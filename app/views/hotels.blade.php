@@ -25,10 +25,15 @@ Attractions
       @if(($category -> name)=='hotel')
         <section class='hotel'>
           <h2>{{ $destination -> name }}</h2>
+          
+          <h2>{{ $destination -> id }}</h2>   {{-- TODO: use the id to get the edit page --}}
+          
           <p>{{$destination -> description}}</p>
-          <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
-          {{--src=' {{ URL::asset('$destination -> link') }} '> --}}
-          src='{{$destination -> link}}'>
+          <a href="/destinations/{{$destination->id}}">   {{-- TODO: point this to the edit page. Use $destination -> id --}}
+            <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
+            {{--src=' {{ URL::asset('$destination -> link') }} '> --}}
+            src='{{$destination -> link}}'>
+          </a>
           <p><a href='{{$destination -> map}}'>Map</a> |
                <a href='/itinerary/create'>Add</a> |
                {{-- TODO Bonus ... pass the destination id to the itinerary create form --}}

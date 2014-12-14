@@ -52,6 +52,14 @@ Route::post('/attractions/edit', 'AttractionController@postEdit');
 
 
 /**
+ * Destinations
+ * to list and view details for Hotels or Attractions
+ */
+Route::get('/destinations/{id}', 'DestinationController@getEdit');
+
+
+
+/**
  * Itineraries
  */                        
 Route::get('/itinerary', 'ItineraryController@getIndex');
@@ -68,7 +76,9 @@ Route::delete('/itinerary/delete/{id}', 'ItineraryController@destroy');
  */
 Route::get('/comments/user/{id}', 'CommentController@getListUser');
 Route::get('/comments/destination/{id}', 'CommentController@getListDestination');
- 
+Route::get('/comments/destination/add/{id}', 'CommentController@getEdit'); //Add a comment, post form
+//Route::post('/comments/destination/add/{id}', 'CommentController@postEdit'); //Add a comment, post form
+Route::post('/comments/create', 'CommentController@postEdit'); //Add a comment, post form
  
 
 

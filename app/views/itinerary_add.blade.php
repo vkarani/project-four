@@ -42,9 +42,6 @@ Itinerary
 		{{ Form::text('category'); }}
     --}}
     
-    
-    
-    
     {{ Form::label('destination_id', 'Place') }}
 		{{ Form::select('destination_id', $destinations); }}
     <br>
