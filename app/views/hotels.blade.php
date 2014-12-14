@@ -25,9 +25,6 @@ Attractions
       @if(($category -> name)=='hotel')
         <section class='hotel'>
           <h2>{{ $destination -> name }}</h2>
-          
-          <h2>{{ $destination -> id }}</h2>   {{-- TODO: use the id to get the edit page --}}
-          
           <p>{{$destination -> description}}</p>
           <a href="/destinations/{{$destination->id}}">   {{-- TODO: point this to the edit page. Use $destination -> id --}}
             <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 

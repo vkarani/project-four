@@ -26,9 +26,12 @@ Attractions
         <section class='attraction'>
           <h2>{{ $destination -> name }}</h2>
           <p>{{$destination -> description}}</p>
-          <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
-          {{--src=' {{ URL::asset('$destination -> link') }} '> --}}
-          src='{{$destination -> link}}'>
+          
+          <a href="/destinations/{{$destination->id}}">   {{-- TODO: point this to the edit page. Use $destination -> id --}}
+            <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
+            {{--src=' {{ URL::asset('$destination -> link') }} '> --}}
+            src='{{$destination -> link}}'>
+          </a>
           <p><a href='{{$destination -> map}}'>Map</a> |
                <a href='/itinerary/create'>Add</a> |    
                <a href='/comments/destination/{{$destination -> id}}'>Comments</a>

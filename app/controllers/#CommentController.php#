@@ -63,7 +63,7 @@ class CommentController extends BaseController {
   public function getEdit($id){
   	try {
 		  $destination = Destination::findOrFail($id);
-		  //$comments = $destination-> comment;
+		  	//$comments = $destination-> comment;
 		  //$authors = Author::getIdNamePair();
 		}
 		catch(exception $e) {
