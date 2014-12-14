@@ -76,10 +76,10 @@ Route::delete('/itinerary/delete/{id}', 'ItineraryController@destroy');
  */
 Route::get('/comments/user/{id}', 'CommentController@getListUser');
 Route::get('/comments/destination/{id}', 'CommentController@getListDestination');
-Route::get('/comments/destination/add/{id}', 'CommentController@getEdit'); //Add a comment, post form
-//Route::post('/comments/destination/add/{id}', 'CommentController@postEdit'); //Add a comment, post form
-Route::post('/comments/create', 'CommentController@postEdit'); //Add a comment, post form
- 
+Route::get('/comments/destination/create/{id}', 'CommentController@getCreate');   //Add a comment form
+Route::post('/comments/create', 'CommentController@postCreate');               //Add a comment post
+Route::get('/comments/destination/edit/{id}', 'CommentController@getEdit');     //Edit a comment form 
+Route::post('/comments/edit', 'CommentController@postEdit');               //Edit a comment post
 
 
 /**

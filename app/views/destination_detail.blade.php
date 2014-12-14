@@ -23,7 +23,7 @@ Attractions
   <h2>{{ $destination -> name }}</h2>
   <p>{{ $destination -> description }}</p>   {{-- TODO: use the id to get the edit page --}}
   <p>  
-  <a href='/comments/destination/add/{{$destination -> id}}' class="btn btn-default"  >Add Comment</a>
+  <a href='/comments/destination/create/{{$destination -> id}}' class="btn btn-default"  >Add Comment</a>
   </p>
   <img style="height:auto; width:auto; max-width:800px; max-height:800px;" 
   src='/{{$destination -> link}}'>

@@ -60,24 +60,24 @@ class CommentController extends BaseController {
   }
   
   //Form to add a comment for a destination
-  public function getEdit($id){
+  public function getCreate($id){
   	try {
 		  $destination = Destination::findOrFail($id);
-		  //$comments = $destination-> comment;
+		  	//$comments = $destination-> comment;
 		  //$authors = Author::getIdNamePair();
 		}
 		catch(exception $e) {
 		  return Redirect::to('/attractions')->with('flash_message', 'Destination does not exist');
 		}
 		
-		return View::make('comment')
+		return View::make('comment_add')
                ->with('destination', $destination) ;
 		
   }
   
   //Handle the post. Add comment to the db.
-  public function postEdit(){
-  	echo Paste\Pre::render($_POST); //DEBUG
+  public function postCreate(){
+  	//echo Paste\Pre::render($_POST); //DEBUG
   	
   	//Validation
     $data= Input::all();
@@ -119,5 +119,74 @@ class CommentController extends BaseController {
            ->withErrors($validator)
            ->with('flash_message','Please fix the errors and resubmit'); 
   }
+  
+  
+  //Form to add a comment for a destination
+  
+  public function getEdit($comment_id){
+  	
+  	try {
+		  $comment = Comment::findOrFail($comment_id);
+		  	//$comments = $destination-> comment;
+		  //$authors = Author::getIdNamePair();
+		}
+		catch(exception $e) {
+		  return Redirect::to('/attractions')->with('flash_message', 'Comment does not exist');
+		}
+
+		return View::make('comment_edit')
+		           ->with('comment', $comment);
+		
+  }
+  
+  
+  //Handle the post. Add existing comment from the db.
+  public function postEdit(){
+  	//echo Paste\Pre::render($_POST); //DEBUG
+  	
+  	//Validation
+    $data= Input::all();
+    /*comment required, at least 10 char
+      destination_id required
+    */
+    $rules = array(
+      'comment'  => 'required|min:10',
+      'comment_id'  => 'required|numeric'
+    );
+    
+    $validator = Validator::make($data, $rules);
+    
+    if ($validator->passes()) {
+    	//echo "pass <br>"; //DEBUG
+    	//get the comment from db as object
+    	try {
+    		$comment = Comment::findOrFail(Input::get('comment_id'));
+	      //$destination = Destination::findOrFail(Input::get('destination_id'));
+	      //echo Paste\Pre::render($destination); //DEBUG
+	      //echo "Pass";
+	    }
+	    catch(exception $e) {
+	      return Redirect::to('/itinerary')->with('flash_message', 'The selected Comment was not found');
+	    }
+	    //get the destination
+	    $destination=$comment->destination;
+	    //echo Paste\Pre::render($destination); //DEBUG
+	    
+	    $comment -> comment = (Input::get('comment'));
+	    $comment -> save();
+	    //echo Paste\Pre::render($comment); //DEBUG	
+	          
+      return Redirect::to('/comments/user/'.Auth::user()->id)
+  	                 ->with('flash_message','Your comment for '.$destination -> name.' was updated.');
+    }
+    
+    return Redirect::to('/comments/destination/edit/'.Input::get('comment_id'))
+           ->withInput()
+           ->withErrors($validator)
+           ->with('flash_message','Please fix the errors and resubmit');
+    
+
+  }
+  
   
 }

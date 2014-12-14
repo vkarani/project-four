@@ -32,11 +32,15 @@ Itinerary
     <tr>
       <th>Destination</th>
       <th>Comment</th>
+      <th>Edit</th>
     </tr>  
   @foreach($comments as $comment)
     <tr>
       <td>{{$comment -> destination -> name}}</td>
       <td>{{$comment -> comment}}</td>
+      <td> 
+        <a href='/comments/destination/edit/{{$comment -> id}}' class="btn btn-default" > Edit Comment</a> 
+      </td>
     </tr>
   @endforeach
   </table>
