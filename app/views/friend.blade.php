@@ -26,9 +26,24 @@ Itinerary
 
 @section('content')
   <h2>Here are your friends</h2>
-  Click on each one for their itinerary
   
+  <table id="t01" class= "table table-hover table-striped table-responsive">
   @foreach(Auth::user()->friends as $i)
-    <li> {{$i->email}}  <a href='/friends/itinerary/{{$i->id}}' class="btn btn-default"> Itinerary</a>  </li>
+    <tr>
+    <td>
+      <li> {{$i->email}}     {{-- email --}}
+    </td>
+    <td>
+      <a href='/friends/itinerary/{{$i->id}}' class="btn btn-default"> Itinerary</a> {{-- Link to itinerary --}}
+    </td>
+    <td>
+      {{-- Remove Friend --}}
+      {{ Form::open(['method' => 'DELETE', 'action' => ['FriendController@postDelete', $i -> id]]) }}
+		    <a href='javascript:void(0)' onClick='parentNode.submit();return false;' class="btn btn-danger" >Remove Friend</a>
+	    {{ Form::close() }}
+	  </td>  
+    </li>
+    </tr>
   @endforeach
+  </table>
 @stop

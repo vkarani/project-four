@@ -86,6 +86,7 @@ Route::post('/comments/edit', 'CommentController@postEdit');               //Edi
  */                        
 Route::get('/friends', 'FriendController@getIndex');
 Route::get('/friends/itinerary/{id}', 'FriendController@getItinerary');  //List Friends itinerary
+Route::post('/friends/delete/{id}', 'FriendController@postDelete');//Delete a Friend
 
 
 /**

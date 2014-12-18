@@ -61,10 +61,6 @@ Itinerary
         
         {{-- Delete --}}
         <td>
-        {{--
-          {{$itinerary -> id}}  
-          DEBUG. works.
-        --}}
 
         {{ Form::open(['method' => 'DELETE', 'action' => ['ItineraryController@postDelete', $itinerary -> id]]) }}
 		      <a href='javascript:void(0)' onClick='parentNode.submit();return false;' class="btn btn-danger" >Delete</a>

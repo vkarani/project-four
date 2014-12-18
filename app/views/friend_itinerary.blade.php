@@ -27,7 +27,7 @@ Itinerary
 @section('content')
   
   @if(sizeof($itineraries) == 0)
-    <h2> No Itineraries set up for {{$user_email}}..</h2>
+    <h2> No Itineraries set up for {{$user_email}}.</h2>
   @else
     <h2>This the itinerary of your friend {{$user_email}}</h2>
     <table id="t01" class= "table table-hover table-striped table-responsive">

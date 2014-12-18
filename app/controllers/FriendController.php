@@ -28,7 +28,7 @@ class FriendController extends BaseController {
     $userid=$user->id;
     $user_email = $user->email;
                
-  	echo Paste\Pre::render($user_email);//DEBUG
+  	//echo Paste\Pre::render($user_email);//DEBUG
   		
   	$itineraries = Visitdate::with('destination')
   	               -> where('user_id',$userid)
