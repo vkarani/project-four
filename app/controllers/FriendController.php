@@ -41,4 +41,36 @@ class FriendController extends BaseController {
   	           
   }
   
+  
+  /**
+	* Process itinerary deletion
+	*
+	* @return Redirect
+	*/
+	
+  public function postDelete() {
+  	//echo Paste\Pre::render($_POST); //DEBUG
+  }
+  
+  
+  /**
+	* Process itinerary deletion
+	*
+	* @return Redirect
+	*/
+	
+  public function destroy($id) {
+  	try {
+	    $user = User::findOrFail($id);
+	  }
+	  catch(exception $e) {
+	    return Redirect::to('/friends/')->with('flash_message', 'Could not remove friend - not found.');
+	  }
+  	
+  	//$user1->add_friend($user2->id);
+  	Auth::user()->remove_friend($id);
+	  return Redirect::to('/friends/')->with('flash_message', 'Friend removed.');
+  }
+  
+  
 }
