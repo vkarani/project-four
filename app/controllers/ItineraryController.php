@@ -153,8 +153,8 @@ class ItineraryController extends BaseController {
   * 
   */
   public function getDelete(){
-  	echo Paste\Pre::render($_GET); //DEBUG
-  	echo Paste\Pre::render($_POST);
+  	//echo Paste\Pre::render($_GET); //DEBUG
+  	//echo Paste\Pre::render($_POST);
   	//TODO....
   }
   
@@ -166,7 +166,7 @@ class ItineraryController extends BaseController {
 	*/
 	
   public function postDelete() {
-  	echo Paste\Pre::render($_POST); //DEBUG
+  	//echo Paste\Pre::render($_POST); //DEBUG
   	/*
   	// Handle the delete confirmation.
     $id = Input::get('game');

@@ -71,4 +71,48 @@ class FriendController extends BaseController {
   }
   
   
+  public function postAdd(){
+  	//echo Paste\Pre::render($_POST); //DEBUG
+  	
+  	//Validation
+    $data= Input::all();
+    /*checkindate, time mandatory
+      All dates and times must have proper format
+    */
+    $rules = array(
+      'friend'  => 'required|email'
+    );
+    $validator = Validator::make($data, $rules);
+    
+    if ($validator->passes()) {
+    	//get id from email address...
+    	$friend_users= User::where('email','=' ,'user4@email.com') -> get();
+    	//echo Paste\Pre::render($friend_users); //DEBUG
+    	
+    	//Do a check for size
+    	foreach($friend_users as $friend_user){
+    		echo Paste\Pre::render($friend_user -> id); //DEBUG
+    		$current_user = Auth::user();
+    		$current_user->add_friend($friend_user ->id);
+    		return Redirect::to('/friends')->with('flash_message', 'Friend '.$friend_user -> email.' added');
+    	}
+    	
+    	//TODO add fail case.
+    	
+    	/*
+    	try {
+	      //$friend = User::findOrFail(Input::get('friend'));
+	      $friend = User::findOrFail('1');
+	      echo Paste\Pre::render($friend); //DEBUG
+	    }
+	    catch(exception $e) {
+	      return Redirect::to('/friends')->with('flash_message', 'The selected User does not exist');
+	    }
+	    */
+    
+    }
+
+  }
+  
+  
 }
