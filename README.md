@@ -4,16 +4,20 @@
 <http://p4.digitalwebapplications.com>
 
 ## Description
-My Project #4 provides 
--
--
--
+My Project #4 provides  a way for different users to login and share comments and itineraries when visiting a 
+large, Well known city. 
+Users can 
+- sign up
+- comment on various destinations
+- create itineraries
+- add friends and
+- view their friends itineraries
 
 ## Demo
-Will present Demo in my section on ???
+Jing 
 
 ## Details for teaching team
-- No login required. ??? TODO
+- login as user1@email.com. You can also create your own users.
 - Validated css and html on http://validator.w3.org/  ??? TODO
 - Already had link to p3 in p1, but fixed a broken link. ??? TODO
 
@@ -29,6 +33,15 @@ Will present Demo in my section on ???
 - Foobooks class demo/project https://github.com/susanBuck/foobooks
 - Friends:  https://github.com/laravel/framework/issues/441
 
-## Database...
+## Database
+- Tables
+* user                  --- has user information
+* friend_user          --- pivot from user to user, for friends
+* destinations          --- has info about destinations
+* categories            --- has info on the type of destination i.e. hotel, park, etc
+* category_destination  --- pivot between category and destination
+* comments              --- comments about destinations              |
+* visitdates            --- itinerary information
+* destination_visitdate --- pivot between destinations and visitdates
 
 TODO...
