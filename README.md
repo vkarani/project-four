@@ -27,6 +27,7 @@ Will present Demo in my section on ???
 - Standard Hotels:      Picture of the standard hotel
 - W Hotel:              Picture of the W hotel
 - Foobooks class demo/project https://github.com/susanBuck/foobooks
+- Friends:  https://github.com/laravel/framework/issues/441
 
 ## Database...
 

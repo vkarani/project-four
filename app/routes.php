@@ -81,6 +81,12 @@ Route::post('/comments/create', 'CommentController@postCreate');               /
 Route::get('/comments/destination/edit/{id}', 'CommentController@getEdit');     //Edit a comment form 
 Route::post('/comments/edit', 'CommentController@postEdit');               //Edit a comment post
 
+/**
+ * Friends
+ */                        
+Route::get('/friends', 'FriendController@getIndex');
+Route::get('/friends/itinerary/{id}', 'FriendController@getItinerary');  //List Friends itinerary
+
 
 /**
  * Seed everything
@@ -185,6 +191,49 @@ Route::get('/seed', function()
   }
   echo "Created User user2 <br>";
 
+  
+  #Test user3
+  $user3 = new User;
+  $user3->email = "user3@email.com";
+  $user3->password = Hash::make("password");
+  #Try to add user user3 
+  try {
+    $user3->save();
+  }
+  #Fail
+  catch (Exception $e) {
+  	return "Failed to create user3";
+  }
+  echo "Created User user3 <br>";
+
+  #Test user4
+  $user4 = new User;
+  $user4->email = "user4@email.com";
+  $user4->password = Hash::make("password");
+  #Try to add user user4 
+  try {
+    $user4->save();
+  }
+  #Fail
+  catch (Exception $e) {
+  	return "Failed to create user4";
+  }
+  echo "Created User user4 <br>";
+
+  
+  
+  
+  //Make user1 some friends ...
+  $user1->add_friend($user2->id);
+  echo "Made user2 a friend of user1 <br>";
+  $user1->add_friend($user3->id);
+  echo "Made user3 a friend of user1 <br>";
+  $user1->add_friend($user4->id);
+  echo "Made user4 a friend of user1 <br>";
+  
+
+  //echo "The friend of user1 is $user3->email<br>";
+  //echo Paste\Pre::render($user3); //DEBUG  
 
   #User1 comments on Lady Liberty
   $l_comment =  new Comment;
@@ -258,7 +307,15 @@ Route::get('/seed', function()
   $visitdate3 -> destination()->attach($liberty);  
   echo "Created a trip to central park <br>";
   
-  echo "Seeding done";
+  echo "Seeding done <br>";
+  
+  /*
+  echo "The friends of user1 are ";
+  foreach($user1->friends as $i) {
+    //var_dump($i->email);
+    echo $i->email;
+  }
+  */
 });
 
 
@@ -278,19 +335,3 @@ Route::get('/debug',function() {
 });
 
 
-/*
-TODO --> REMOVE ME BEFORE I GO LIVE
-*/
-/*
-Route::get('/truncate', function() {
-  # Clear the tables to a blank slate
-  DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
-  DB::statement('TRUNCATE categories');
-  DB::statement('TRUNCATE destinations');
-  DB::statement('TRUNCATE category_destination');
-  DB::statement('TRUNCATE users');
-  DB::statement('TRUNCATE visitdates');
-  DB::statement('TRUNCATE destination_visitdate');
-  echo "Truncated all Database records <br>";
-});
-*/

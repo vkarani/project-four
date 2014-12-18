@@ -81,31 +81,30 @@ class UserController extends BaseController {
    * Process the login form
    * @return View
    */
-   public function postLogin(){
-     //TODO ******* csrf?????
-   	 $credentials = Input::only('email','password');
-   	 if (Auth::attempt($credentials, $remember = false)) {
-        return Redirect::intended('/itinerary')->with('flash_message', 'Welcome Back!');
-     }
-     else {
-        return Redirect::to('/login')->with('flash_message', 'Log in failed; please try again.');
-     }
-     return Redirect::to('login');
-   }
+  public function postLogin(){
+    //TODO ******* csrf?????
+   	$credentials = Input::only('email','password');
+   	if (Auth::attempt($credentials, $remember = false)) {
+      return Redirect::intended('/itinerary')->with('flash_message', 'Welcome Back!');
+    }
+    else {
+      return Redirect::to('/login')->with('flash_message', 'Log in failed; please try again.');
+    }
+      return Redirect::to('login');
+  }
    
    
-   /**
-    * Logout
-    * @return Redirect
-    */
-   public function getLogout(){
-   	 # Log out
-     Auth::logout();
+  /**
+   * Logout
+   * @return Redirect
+   */
+  public function getLogout(){
+   # Log out
+    Auth::logout();
 
-     # Send them to the homepage
-     return Redirect::to('/');
-   } 
-  
+    # Send them to the homepage
+    return Redirect::to('/');
+  } 
   
 }
 

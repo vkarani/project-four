@@ -25,25 +25,10 @@ Itinerary
 @stop
 
 @section('content')
-  {{-- TODO check for zero size user collection --}}
-  {{-- <h1>Here are all the comments for user:- {{$user -> email }}...</h1> --}}
-  <h1>Here are your comments...</h1>
-
-  <table id="t01" class= "table table-hover table-striped table-responsive">
-    <tr>
-      <th>Destination</th>
-      <th>Comment</th>
-      <th>Edit</th>
-    </tr>  
-  @foreach($comments as $comment)
-    <tr>
-      <td>{{$comment -> destination -> name}}</td>
-      <td>{{$comment -> comment}}</td>
-      <td> 
-        <a href='/comments/destination/edit/{{$comment -> id}}' class="btn btn-default" > Edit Comment</a> 
-      </td>
-    </tr>
+  <h2>Here are your friends</h2>
+  Click on each one for their itinerary
+  @foreach(Auth::user()->friends as $i)
+    <p> {{$i->email}}</p>
+    
   @endforeach
-  </table>
-  
 @stop
