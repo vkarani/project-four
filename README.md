@@ -17,7 +17,7 @@ Users can
 Jing 
 
 ## Details for teaching team
-- login as user1@email.com. You can also create your own users.
+- login as user1@email.com/password. You can also create your own users.
 - Validated css and html on http://validator.w3.org/  ??? TODO
 - Already had link to p3 in p1, but fixed a broken link. ??? TODO
 
@@ -36,12 +36,16 @@ Jing
 ## Database
 - Tables
 * user                  --- has user information
-* friend_user          --- pivot from user to user, for friends
+* friend_user           --- pivot from user to user, for friends
 * destinations          --- has info about destinations
 * categories            --- has info on the type of destination i.e. hotel, park, etc
 * category_destination  --- pivot between category and destination
-* comments              --- comments about destinations              |
+* comments              --- comments about destinations              
 * visitdates            --- itinerary information
 * destination_visitdate --- pivot between destinations and visitdates
 
-TODO...
+## Operations
+* CREATE                --- can add users, comments, itineraries
+* READ                  --- can read from all tables to update UI
+* UPDATE                --- can update comments
+* DELETE                --- can delete friends, your own comments

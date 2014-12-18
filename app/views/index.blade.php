@@ -16,8 +16,8 @@
 
 @section('user_session')
   {{-- Only display if NOT logged in TODO --}}
-  <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-  <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  <a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+  <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 @stop
 
 @section('content')
@@ -26,8 +26,8 @@
   <h2>Welcome</h2>
   <p>This website allows you to plan your travel to famous New York destinations and share your travels with your friends</p>
   <p>Please <b>Sign Up</b> or <b>Login</b></p>
-  <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-  <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-  {{--<p> <del><b><font color="red">NOTE !!! Only display this if user is NOT logged in.</font></b></del> </p> --}}
+  <a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+  <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+  {{--NOTE !!! Only display this page if user is NOT logged in. --}}
  </section>	
 @stop

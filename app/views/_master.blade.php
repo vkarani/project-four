@@ -40,7 +40,7 @@
     <!-- Use Jumbotron to announce your intentions... -->
     <div class = container-fluid>
       <div class="jumbotron">
-        <h2>Victor Karani P4: New York Travel</h1>            
+        <h2>Victor Karani P4: New York Travel</h2>            
       </div>
     </div>
     

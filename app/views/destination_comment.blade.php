@@ -13,6 +13,7 @@ Itinerary
   <li><a href="/attractions">Attractions</a></li>
   <li><a href="/itinerary">Itinerary</a></li>
   <li><a href="/comments/user/{{Auth::user() -> id}}">Comments</a></li>
+  <li><a href="/friends">Friends</a></li>
 @stop
 
 @section('user_session')
