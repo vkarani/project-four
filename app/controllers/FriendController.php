@@ -46,8 +46,7 @@ class FriendController extends BaseController {
 	* Process itinerary deletion
 	*
 	* @return Redirect
-	*/
-	
+	*/	
   public function postDelete() {
   	//echo Paste\Pre::render($_POST); //DEBUG
   }
@@ -58,7 +57,6 @@ class FriendController extends BaseController {
 	*
 	* @return Redirect
 	*/
-	
   public function destroy($id) {
   	try {
 	    $user = User::findOrFail($id);

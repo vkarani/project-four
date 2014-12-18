@@ -46,4 +46,23 @@ Itinerary
     </tr>
   @endforeach
   </table>
+  
+  <h2>You can add friends below</h2>
+  {{ Form::open(array('url' => '/friends/add')) }}
+  {{-- Form::open(['method' => 'ADD' , 'action' => ['FriendController@postAdd',] ])           --}}
+    <ul class="errors">
+    @foreach($errors->get('friend') as $message)
+        <li>{{ $message }}</li>
+    @endforeach
+    </ul>
+		{{ Form::label('friend','email address of friend') }}
+		<br>
+		{{ Form::email('friend'); }}
+		<br>
+		{{-- Form::hidden('destination_id', $destination -> id) --}}
+		{{ Form::submit('Add'); }}
+	{{ Form::close() }}
+  
+  
+  
 @stop
