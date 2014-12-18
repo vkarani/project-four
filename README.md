@@ -14,7 +14,7 @@ Users can
 - view their friends itineraries
 
 ## Demo
-Jing 
+Jing:- http://www.screencast.com/t/p3nwp2qsf4 
 
 ## Details for teaching team
 - login as user1@email.com/password. You can also create your own users.
