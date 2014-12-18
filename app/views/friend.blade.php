@@ -31,7 +31,7 @@ Itinerary
   @foreach(Auth::user()->friends as $i)
     <tr>
     <td>
-      <li> {{$i->email}}     {{-- email --}}
+      {{$i->email}}      {{-- email --}}
     </td>
     <td>
       <a href='/friends/itinerary/{{$i->id}}' class="btn btn-default"> Itinerary</a> {{-- Link to itinerary --}}
@@ -42,7 +42,6 @@ Itinerary
 		    <a href='javascript:void(0)' onClick='parentNode.submit();return false;' class="btn btn-danger" >Remove Friend</a>
 	    {{ Form::close() }}
 	  </td>  
-    </li>
     </tr>
   @endforeach
   </table>

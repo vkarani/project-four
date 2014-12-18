@@ -66,12 +66,12 @@ Itinerary
 		      <a href='javascript:void(0)' onClick='parentNode.submit();return false;' class="btn btn-danger" >Delete</a>
 	      {{ Form::close() }}
 	      
-        <td>
+        </td>
       </tr>
     @endforeach
     </table>
   @endif
-  <form method="link" action="/itinerary/create">
+  <form action="/itinerary/create">
     <input type="submit" value="Add a new Item">
   </form>
 @stop

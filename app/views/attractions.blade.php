@@ -31,7 +31,7 @@ Attractions
           <a href="/destinations/{{$destination->id}}">   {{-- TODO: point this to the edit page. Use $destination -> id --}}
             <img style="height:auto; width:auto; max-width:250px; max-height:250px;" 
             {{--src=' {{ URL::asset('$destination -> link') }} '> --}}
-            src='{{$destination -> link}}'>
+            src='{{$destination -> link}}' alt="Attraction Image" >
           </a>
           <p><a href='{{$destination -> map}}'>Map</a> |
                <a href='/itinerary/create'>Add</a> |    

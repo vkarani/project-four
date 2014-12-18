@@ -18,8 +18,8 @@ Jing
 
 ## Details for teaching team
 - login as user1@email.com/password. You can also create your own users.
-- Validated css and html on http://validator.w3.org/  ??? TODO
-- Already had link to p3 in p1, but fixed a broken link. ??? TODO
+- Please use chrome. May not work with other browsers
+- Validated pages on http://validator.w3.org/  --- Note that the debugbar might produce errors, but the main site checks out fine
 
 ## Outside code and resources
 - Bootstrap:            maxcdn.bootstrapcdn.com

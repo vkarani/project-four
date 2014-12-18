@@ -26,7 +26,7 @@ Attractions
   <a href='/comments/destination/create/{{$destination -> id}}' class="btn btn-default"  >Add Comment</a>
   </p>
   <img style="height:auto; width:auto; max-width:800px; max-height:800px;" 
-  src='/{{$destination -> link}}'>
+  src='/{{$destination -> link}}' alt="Destination Image">
           
   {{-- <p><a href='{{$destination -> map}}'>Map</a> |
        <a href='/itinerary/create'>Add</a> |
