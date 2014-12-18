@@ -27,8 +27,8 @@ Itinerary
 @section('content')
   <h2>Here are your friends</h2>
   Click on each one for their itinerary
+  
   @foreach(Auth::user()->friends as $i)
-    <p> {{$i->email}}</p>
-    
+    <li> {{$i->email}}  <a href='/friends/itinerary/{{$i->id}}' class="btn btn-default"> Itinerary</a>  </li>
   @endforeach
 @stop
